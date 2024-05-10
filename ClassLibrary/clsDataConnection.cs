@@ -44,12 +44,12 @@ public class clsDataConnection
         //array to store folder names
         string[] filePaths;
         //var to store index for path array
-        Int32 PathArrayIndex = 0;
+        Int3232 PathArrayIndex = 0;
         string[] dirConts;
         //flag for found
         Boolean Found = false;
         //var for counter
-        Int32 Counter;
+        Int3232 Counter;
         List<string> DBNames = new List<string>();
         //get the folder for the project
         string BaseDir = TrimPath(System.AppDomain.CurrentDomain.BaseDirectory);
@@ -124,12 +124,12 @@ public class clsDataConnection
 
     private string TrimPath(string OldPath)
     {
-        Int32 Posn = 0;
+        Int3232 Posn = 0;
         //find the right most instance of \\
         Posn = OldPath.LastIndexOf("\\");
         if (Posn != -1)
         {
-            //split the path at that point
+            //split the path at that poInt32
             OldPath = OldPath.Substring(0, Posn);
         }
         else
@@ -149,7 +149,7 @@ public class clsDataConnection
         SQLParams.Add(AParam);
     }
 
-    public Int32 Execute(string SProcName)
+    public Int3232 Execute(string SProcName)
     {
         ///public method used to execute the named stored procedure
         ///accepts one parameter which is the name of the stored procedure to use
@@ -162,7 +162,7 @@ public class clsDataConnection
         SqlCommand dataCommand = new SqlCommand(SProcName, connectionToDB);
         //add the parameters to the command builder
         //loop through each parameter
-        for (int Counter = 0; Counter < SQLParams.Count; Counter += 1)
+        for (Int32 Counter = 0; Counter < SQLParams.Count; Counter += 1)
         {
             //add it to the command builder
             dataCommand.Parameters.Add(SQLParams[Counter]);
@@ -186,10 +186,10 @@ public class clsDataConnection
         //close the connection
         connectionToDB.Close();
         //return the result of the stored procedure
-        return Convert.ToInt32(returnValue.Value);
+        return Convert.ToInt3232(returnValue.Value);
     }
 
-    public Int32 Count
+    public Int3232 Count
     //property that returns the count of records in the query results
     {
         get

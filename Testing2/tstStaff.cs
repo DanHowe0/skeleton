@@ -9,17 +9,21 @@ namespace Testing2
     {
         [TestMethod]
         public void InstanceOk()
-        {
+        {//create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
+            //test to see that it exists
             Assert.IsNotNull(AnStaff);
         }
 
         [TestMethod]
         public void ActivePropertyOk()
-        {
+        {  //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
+            //create some test data to assign to the property
             Boolean TestData = true;
+            //assign the data to the proprty
             AnStaff.Active = TestData;
+            //test to see that the two values are the same
             Assert.AreEqual(AnStaff.Active, TestData);
         }
         [TestMethod]
@@ -40,7 +44,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
             //create some test data to assign to the property
-            int TestData = 1;
+            Int32 TestData = 1;
             //assign the data to the property
             AnStaff.StaffId = TestData;
             //test to see that the two values are the same
@@ -52,7 +56,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
             //create some test data to assign to the property
-            string TestData = "LE2 7PT";
+            string TestData = ";
             //assign the data to the property
             AnStaff.StaffAddress = TestData;
             //test to see that the two values are the same
@@ -100,7 +104,7 @@ namespace Testing2
             //create a variable to check the validation
             Boolean Found = false;
             //create some test data to use with the method 
-            int StaffId = 1;
+            Int32 StaffId = 1;
             //invoke the method 
             Found = AnStaff.Find(StaffId);
             //test to see that the two values are the same
@@ -116,9 +120,10 @@ namespace Testing2
             // create a variable to record if data is ok 
             Boolean OK = true;
             //create some test data to use with the method 
-            int StaffId = 1;
-            //invoke thye method 
+            Int32 StaffId = 1;
+            //invoke the method 
             Found = AnStaff.Find(StaffId);
+            //check the staff id
             if (AnStaff.StaffId != 1)
             {
                 OK = false;
@@ -137,7 +142,7 @@ namespace Testing2
             // create a variable to record if data is ok 
             Boolean OK = true;
             //create some test data to use with the method 
-            int StaffId = 1;
+            Int32 StaffId = 1;
             //invoke thye method 
             Found = AnStaff.Find(StaffId);
             //check active property 
@@ -159,10 +164,11 @@ namespace Testing2
             // create a variable to record if data is ok 
             Boolean OK = true;
             //create some test data to use with the method 
-            int StaffId = 1;
+            Int32 StaffId = 1;
             //invoke thye method 
             Found = AnStaff.Find(StaffId);
-            if (AnStaff.DateAdded != Convert.ToDateTime("23/12/2022"))
+            //check the date property
+            if (AnStaff.DateAdded != Convert.ToDateTime("2003-08-28"))
             {
                 OK = false;
             }
@@ -180,9 +186,10 @@ namespace Testing2
             // create a variable to record if data is ok 
             Boolean OK = true;
             //create some test data to use with the method 
-            int StaffId = 1;
+            Int32 StaffId = 1;
             //invoke thye method 
             Found = AnStaff.Find(StaffId);
+            // check the address property
             if (AnStaff.StaffAddress != "Ben Russell")
             {
                 OK = false;
@@ -201,9 +208,10 @@ namespace Testing2
             // create a variable to record if data is ok 
             Boolean OK = true;
             //create some test data to use with the method 
-            int StaffId = 1;
+            Int32 StaffId = 1;
             //invoke thye method 
             Found = AnStaff.Find(StaffId);
+            // check the name property
             if (AnStaff.StaffName != "Divyansh")
             {
                 OK = false;
@@ -222,9 +230,10 @@ namespace Testing2
             // create a variable to record if data is ok 
             Boolean OK = true;
             //create some test data to use with the method 
-            int StaffId = 1;
+            Int32 StaffId = 1;
             //invoke thye method 
             Found = AnStaff.Find(StaffId);
+            // check the phone mumber property
             if (AnStaff.StaffPhoneNumber != "7867029044")
             {
                 OK = false;
@@ -243,9 +252,10 @@ namespace Testing2
             // create a variable to record if data is ok 
             Boolean OK = true;
             //create some test data to use with the method 
-            int StaffId = 1;
+            Int32 StaffId = 1;
             //invoke thye method 
             Found = AnStaff.Find(StaffId);
+            // check the email property
             if (AnStaff.StaffEmail != "divyanshsingh1800@gmail.com")
             {
                 OK = false;
