@@ -101,11 +101,11 @@ namespace Testing3
             //create a boolean varaible to record if the data is ok
             Boolean OK = true;
             //create some test data
-            Int32 CustomerNo = 1;
+            Int32 CustomerNo = 2;
             //invoke method
             Found = AnCustomer.Find(CustomerNo);
             //check the customer no 
-            if (AnCustomer.CustomerNo != 1)
+            if (AnCustomer.CustomerNo != 2)
             {
                 OK = false;
             }
@@ -123,7 +123,7 @@ namespace Testing3
             //create a boolean varaible to record if the data is ok
             Boolean OK = true;
             //create some test data
-            Int32 CustomerNo = 1;
+            Int32 CustomerNo = 2;
             //invoke method
             Found = AnCustomer.Find(CustomerNo);
             //check the 2 step verfication
@@ -145,11 +145,11 @@ namespace Testing3
             //create a boolean varaible to record if the data is ok
             Boolean OK = true;
             //create some test data
-            Int32 CustomerNo = 1;
+            Int32 CustomerNo = 2;
             //invoke method
             Found = AnCustomer.Find(CustomerNo);
             //check the first name
-            if (AnCustomer.CustFirstName != "Kiaran")
+            if (AnCustomer.CustFirstName != "Bill")
             {
                 OK = false;
             }
@@ -167,11 +167,11 @@ namespace Testing3
             //create a boolean varaible to record if the data is ok
             Boolean OK = true;
             //create some test data
-            Int32 CustomerNo = 1;
+            Int32 CustomerNo = 2;
             //invoke method
             Found = AnCustomer.Find(CustomerNo);
             //check the Last name
-            if (AnCustomer.CustLastName != "Cotterill")
+            if (AnCustomer.CustLastName != "Will")
             {
                 OK = false;
             }
@@ -189,11 +189,11 @@ namespace Testing3
             //create a boolean varaible to record if the data is ok
             Boolean OK = true;
             //create some test data
-            Int32 CustomerNo = 1;
+            Int32 CustomerNo = 2;
             //invoke method
             Found = AnCustomer.Find(CustomerNo);
             //check the DOB
-            if (AnCustomer.CustDOB != Convert.ToDateTime("15/02/2004"))
+            if (AnCustomer.CustDOB != Convert.ToDateTime("12/02/2000"))
             {
                 OK = false;
             }
@@ -211,11 +211,11 @@ namespace Testing3
             //create a boolean varaible to record if the data is ok
             Boolean OK = true;
             //create some test data
-            Int32 CustomerNo = 1;
+            Int32 CustomerNo = 2;
             //invoke method
             Found = AnCustomer.Find(CustomerNo);
             //check the email
-            if (AnCustomer.CustEmail != "kiaran@gmail.com")
+            if (AnCustomer.CustEmail != "bill@gmail.com")
             {
                 OK = false;
             }
@@ -233,11 +233,11 @@ namespace Testing3
             //create a boolean varaible to record if the data is ok
             Boolean OK = true;
             //create some test data
-            Int32 CustomerNo = 1;
+            Int32 CustomerNo = 2;
             //invoke method
             Found = AnCustomer.Find(CustomerNo);
             //check the address
-            if (AnCustomer.CustAddress != "68, assarts road")
+            if (AnCustomer.CustAddress != "some address")
             {
                 OK = false;
             }
