@@ -76,5 +76,173 @@ namespace Testing3
             AnCustomer.CustAddress = TestData;
             Assert.AreEqual(AnCustomer.CustAddress, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //creates an istance of the class we want to create
+            clsCustomer AnCustomer = new clsCustomer();
+            //create a boolean veriable to store the results of the validation
+            Boolean Found = false;
+            //create some test data
+            Int32 CustomerNo = 1;
+            //invoke method
+            Found = AnCustomer.Find(CustomerNo);
+            //test to see if the results is true
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestCustomerNoFound()
+        {
+            //creates an istance of the class we want to create
+            clsCustomer AnCustomer = new clsCustomer();
+            //create a boolean veriable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean varaible to record if the data is ok
+            Boolean OK = true;
+            //create some test data
+            Int32 CustomerNo = 1;
+            //invoke method
+            Found = AnCustomer.Find(CustomerNo);
+            //check the customer no 
+            if (AnCustomer.CustomerNo != 1)
+            {
+                OK = false;
+            }
+            //test to see if the results is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestHas2SVFound()
+        {
+            //creates an istance of the class we want to create
+            clsCustomer AnCustomer = new clsCustomer();
+            //create a boolean veriable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean varaible to record if the data is ok
+            Boolean OK = true;
+            //create some test data
+            Int32 CustomerNo = 1;
+            //invoke method
+            Found = AnCustomer.Find(CustomerNo);
+            //check the 2 step verfication
+            if (AnCustomer.Has2SV != true)
+            {
+                OK = false;
+            }
+            //test to see if the results is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustFirstNameFound()
+        {
+            //creates an istance of the class we want to create
+            clsCustomer AnCustomer = new clsCustomer();
+            //create a boolean veriable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean varaible to record if the data is ok
+            Boolean OK = true;
+            //create some test data
+            Int32 CustomerNo = 1;
+            //invoke method
+            Found = AnCustomer.Find(CustomerNo);
+            //check the first name
+            if (AnCustomer.CustFirstName != "Kiaran")
+            {
+                OK = false;
+            }
+            //test to see if the results is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustLastNameFound()
+        {
+            //creates an istance of the class we want to create
+            clsCustomer AnCustomer = new clsCustomer();
+            //create a boolean veriable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean varaible to record if the data is ok
+            Boolean OK = true;
+            //create some test data
+            Int32 CustomerNo = 1;
+            //invoke method
+            Found = AnCustomer.Find(CustomerNo);
+            //check the Last name
+            if (AnCustomer.CustLastName != "Cotterill")
+            {
+                OK = false;
+            }
+            //test to see if the results is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustDOBFound()
+        {
+            //creates an istance of the class we want to create
+            clsCustomer AnCustomer = new clsCustomer();
+            //create a boolean veriable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean varaible to record if the data is ok
+            Boolean OK = true;
+            //create some test data
+            Int32 CustomerNo = 1;
+            //invoke method
+            Found = AnCustomer.Find(CustomerNo);
+            //check the DOB
+            if (AnCustomer.CustDOB != Convert.ToDateTime("15/02/2004"))
+            {
+                OK = false;
+            }
+            //test to see if the results is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustEmailFound()
+        {
+            //creates an istance of the class we want to create
+            clsCustomer AnCustomer = new clsCustomer();
+            //create a boolean veriable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean varaible to record if the data is ok
+            Boolean OK = true;
+            //create some test data
+            Int32 CustomerNo = 1;
+            //invoke method
+            Found = AnCustomer.Find(CustomerNo);
+            //check the email
+            if (AnCustomer.CustEmail != "kiaran@gmail.com")
+            {
+                OK = false;
+            }
+            //test to see if the results is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustAddressFound()
+        {
+            //creates an istance of the class we want to create
+            clsCustomer AnCustomer = new clsCustomer();
+            //create a boolean veriable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean varaible to record if the data is ok
+            Boolean OK = true;
+            //create some test data
+            Int32 CustomerNo = 1;
+            //invoke method
+            Found = AnCustomer.Find(CustomerNo);
+            //check the address
+            if (AnCustomer.CustAddress != "68, assarts road")
+            {
+                OK = false;
+            }
+            //test to see if the results is true
+            Assert.IsTrue(OK);
+        }
     }
 }
