@@ -36,4 +36,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //redirect to the viewer page
         Response.Redirect("LaptopsViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the laptop class
+        clsLaptops aLaptop = new clsLaptops();
+        //create a variable to store the primary key
+        Int32 LaptopId;
+        //create a variable to store the result of a find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        LaptopId = Convert.ToInt32(txtLaptopID.Text);
+        //find the record
+        Found = aLaptop.Find(LaptopId);
+        //if found
+        if (Found)
+        {
+            //display the values of the properties in the form
+            txtLaptopModel.Text = aLaptop.LaptopModel;
+            txtLaptopManufacturer.Text = aLaptop.LaptopManufacturer;
+            txtLaptopPrice.Text = aLaptop.LaptopPrice.ToString();
+            txtLaptopQuantity.Text = aLaptop.LaptopQuantity.ToString();
+            chkLaptopReorder.Checked = aLaptop.LaptopReorder;
+            txtLaptopReorderDate.Text = aLaptop.LaptopReorderDate.ToString();
+
+        }
+    }
 }

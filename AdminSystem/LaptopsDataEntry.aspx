@@ -23,6 +23,9 @@
         <asp:Label ID="lblLaptopID" runat="server" Text="Laptop ID" width="130px"></asp:Label>
         <asp:TextBox ID="txtLaptopID" runat="server" Width="183px"></asp:TextBox>
         </p>
+        <p class="auto-style2">
+        <asp:Button ID="btnFind" runat="server" style="margin-left: 30px" Text="Find" Width="100px" OnClick="btnFind_Click" />
+        </p>
         <p class="auto-style1">
         <asp:Label ID="lblLaptopModel" runat="server" Text="Model" width="130px"></asp:Label>
         <asp:TextBox ID="txtLaptopModel" runat="server" Width="191px"></asp:TextBox>
