@@ -152,7 +152,7 @@ namespace Testing1
             //invoke the method
             found = aLaptop.Find(LaptopID);
             //check the address id
-            if (aLaptop.LaptopModel != "G1o45")
+            if (aLaptop.LaptopModel != "Slick")
             {
                 OK = false;
             }
@@ -173,7 +173,7 @@ namespace Testing1
             //invoke the method
             found = aLaptop.Find(LaptopID);
             //check the address id
-            if (aLaptop.LaptopManufacturer != "Asus")
+            if (aLaptop.LaptopManufacturer != "Intel")
             {
                 OK = false;
             }
@@ -215,7 +215,7 @@ namespace Testing1
             //invoke the method
             found = aLaptop.Find(LaptopID);
             //check the address id
-            if (aLaptop.LaptopPrice != 599.99)
+            if (aLaptop.LaptopPrice != 100.99)
             {
                 OK = false;
             }
@@ -257,7 +257,7 @@ namespace Testing1
             //invoke the method
             found = aLaptop.Find(LaptopID);
             //check the address id
-            if (aLaptop.LaptopReorderDate != Convert.ToDateTime("17/05/2024"))
+            if (aLaptop.LaptopReorderDate != Convert.ToDateTime("25/12/2024"))
             {
                 OK = false;
             }

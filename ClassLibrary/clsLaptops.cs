@@ -64,14 +64,33 @@ namespace ClassLibrary
 
         public bool Find(int laptopID)
         {
-            mLaptopID = 1;
-            mLaptopModel = "G1o45";
-            mLaptopManufacturer = "Asus";
-            mLaptopQuantity = 10;
-            mLaptopPrice = 599.99;
-            mLaptopReorder = false;
-            mLaptopReorderDate = Convert.ToDateTime("17/05/2024");
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the laptop id to search for
+            DB.AddParameter("@LaptopId", laptopID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblLaptops_filterByLaptopID");
+            //if one record is found (there should either be one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mLaptopID = Convert.ToInt32(DB.DataTable.Rows[0]["LaptopID"]);
+                mLaptopModel = Convert.ToString(DB.DataTable.Rows[0]["LaptopModel"]);
+                mLaptopManufacturer = Convert.ToString(DB.DataTable.Rows[0]["LaptopManufacturer"]);
+                mLaptopQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["LaptopQuantity"]);
+                mLaptopPrice = Convert.ToDouble(DB.DataTable.Rows[0]["LaptopPrice"]);
+                mLaptopReorder = Convert.ToBoolean(DB.DataTable.Rows[0]["LaptopReorder"]);
+                mLaptopReorderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["LaptopReorderDate"]);
+                //return that everything worked OK
+                return true;
+            } 
+            //if no record found
+            else
+            {
+                //return false indicating there was a problem
+                return false;
+            }
+            
         }
     }
 
