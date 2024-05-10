@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace Testing1
 {
@@ -21,11 +22,11 @@ namespace Testing1
             //create an instance of the class we want to create
             clsLaptops aLaptop = new clsLaptops();
             //create some test data to assign to the property
-            int ID = 1;
+            int LaptopID = 1;
             //assign the data to the proprty
-            aLaptop.ID = ID;
+            aLaptop.LaptopID = LaptopID;
             //test to see that the two values are the same
-            Assert.AreEqual(aLaptop.ID, ID);
+            Assert.AreEqual(aLaptop.LaptopID, LaptopID);
         }
         [TestMethod]
         public void LaptopModelOK()
@@ -33,11 +34,11 @@ namespace Testing1
             //create an instance of the class we want to create
             clsLaptops aLaptop = new clsLaptops();
             //create some test data to assign to the property
-            String Model = "X81283BY";
+            String LaptopModel = "X81283BY";
             //assign the data to the proprty
-            aLaptop.Model = Model;
+            aLaptop.LaptopModel = LaptopModel;
             //test to see that the two values are the same
-            Assert.AreEqual(aLaptop.Model, Model);
+            Assert.AreEqual(aLaptop.LaptopModel, LaptopModel);
         }
         [TestMethod]
         public void LaptopManufacturerOK()
@@ -45,11 +46,11 @@ namespace Testing1
             //create an instance of the class we want to create
             clsLaptops aLaptop = new clsLaptops();
             //create some test data to assign to the property
-            String Manufacturer = "Asus";
+            String LaptopManufacturer = "Asus";
             //assign the data to the proprty
-            aLaptop.Manufacturer = Manufacturer;
+            aLaptop.LaptopManufacturer = LaptopManufacturer;
             //test to see that the two values are the same
-            Assert.AreEqual(aLaptop.Manufacturer, Manufacturer);
+            Assert.AreEqual(aLaptop.LaptopManufacturer, LaptopManufacturer);
         }
         [TestMethod]
         public void LaptopQuantityOK()
@@ -57,11 +58,11 @@ namespace Testing1
             //create an instance of the class we want to create
             clsLaptops aLaptop = new clsLaptops();
             //create some test data to assign to the property
-            int Quantity = 10;
+            int LaptopQuantity = 10;
             //assign the data to the proprty
-            aLaptop.Quantity = Quantity;
+            aLaptop.LaptopQuantity = LaptopQuantity;
             //test to see that the two values are the same
-            Assert.AreEqual(aLaptop.Quantity, Quantity);
+            Assert.AreEqual(aLaptop.LaptopQuantity, LaptopQuantity);
         }
         [TestMethod]
         public void LaptopPriceOK()
@@ -69,11 +70,11 @@ namespace Testing1
             //create an instance of the class we want to create
             clsLaptops aLaptop = new clsLaptops();
             //create some test data to assign to the property
-            Double Price = 199.99;
+            Double LaptopPrice = 199.99;
             //assign the data to the proprty
-            aLaptop.Price = Price;
+            aLaptop.LaptopPrice = LaptopPrice;
             //test to see that the two values are the same
-            Assert.AreEqual(aLaptop.Price, Price);
+            Assert.AreEqual(aLaptop.LaptopPrice, LaptopPrice);
         }
         [TestMethod]
         public void LaptopReorderOK()
@@ -81,11 +82,11 @@ namespace Testing1
             //create an instance of the class we want to create
             clsLaptops aLaptop = new clsLaptops();
             //create some test data to assign to the property
-            Boolean Reorder = false;
+            Boolean LaptopReorder = false;
             //assign the data to the proprty
-            aLaptop.Reorder = Reorder;
+            aLaptop.LaptopReorder = LaptopReorder;
             //test to see that the two values are the same
-            Assert.AreEqual(aLaptop.Reorder, Reorder);
+            Assert.AreEqual(aLaptop.LaptopReorder, LaptopReorder);
         }
         [TestMethod]
         public void LaptopReorderDateOK()
@@ -93,12 +94,175 @@ namespace Testing1
             //create an instance of the class we want to create
             clsLaptops aLaptop = new clsLaptops();
             //create some test data to assign to the property
-            DateTime ReorderDate = DateTime.Now.Date;
+            DateTime LaptopReorderDate = DateTime.Now.Date;
             //assign the data to the proprty
-            aLaptop.ReorderDate = ReorderDate;
+            aLaptop.LaptopReorderDate = LaptopReorderDate;
             //test to see that the two values are the same
-            Assert.AreEqual(aLaptop.ReorderDate, ReorderDate);
+            Assert.AreEqual(aLaptop.LaptopReorderDate, LaptopReorderDate);
         }
 
+        [TestMethod]
+        public void LaptopFindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsLaptops aLaptop = new clsLaptops();
+            //create a Boolean value to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 LaptopID = 1;
+            //invoke the method
+            Found = aLaptop.Find(LaptopID);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestLaptopIDFound()
+        {
+            //create an instance of the class we want to create
+            clsLaptops aLaptop = new clsLaptops();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK
+            Boolean OK = true;
+            //create some test data
+            Int32 LaptopID = 1;
+            //invoke the method
+            found = aLaptop.Find(LaptopID);
+            //check the address id
+            if (aLaptop.LaptopID != 1)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestLaptopModelFound()
+        {
+            //create an instance of the class we want to create
+            clsLaptops aLaptop = new clsLaptops();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK
+            Boolean OK = true;
+            //create some test data
+            Int32 LaptopID = 1;
+            //invoke the method
+            found = aLaptop.Find(LaptopID);
+            //check the address id
+            if (aLaptop.LaptopModel != "G1o45")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestLaptopManufacturerFound()
+        {
+            //create an instance of the class we want to create
+            clsLaptops aLaptop = new clsLaptops();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK
+            Boolean OK = true;
+            //create some test data
+            Int32 LaptopID = 1;
+            //invoke the method
+            found = aLaptop.Find(LaptopID);
+            //check the address id
+            if (aLaptop.LaptopManufacturer != "Asus")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestLaptopQuantityFound()
+        {
+            //create an instance of the class we want to create
+            clsLaptops aLaptop = new clsLaptops();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK
+            Boolean OK = true;
+            //create some test data
+            Int32 LaptopID = 1;
+            //invoke the method
+            found = aLaptop.Find(LaptopID);
+            //check the address id
+            if (aLaptop.LaptopQuantity != 10)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestLaptopPriceFound()
+        {
+            //create an instance of the class we want to create
+            clsLaptops aLaptop = new clsLaptops();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK
+            Boolean OK = true;
+            //create some test data
+            Int32 LaptopID = 1;
+            //invoke the method
+            found = aLaptop.Find(LaptopID);
+            //check the address id
+            if (aLaptop.LaptopPrice != 599.99)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestLaptopReorderFound()
+        {
+            //create an instance of the class we want to create
+            clsLaptops aLaptop = new clsLaptops();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK
+            Boolean OK = true;
+            //create some test data
+            Int32 LaptopID = 1;
+            //invoke the method
+            found = aLaptop.Find(LaptopID);
+            //check the address id
+            if (aLaptop.LaptopReorder != false)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestLaptopReorderDateFound()
+        {
+            //create an instance of the class we want to create
+            clsLaptops aLaptop = new clsLaptops();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK
+            Boolean OK = true;
+            //create some test data
+            Int32 LaptopID = 1;
+            //invoke the method
+            found = aLaptop.Find(LaptopID);
+            //check the address id
+            if (aLaptop.LaptopReorderDate != Convert.ToDateTime("17/05/2024"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 }

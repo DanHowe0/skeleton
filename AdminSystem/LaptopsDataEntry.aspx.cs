@@ -15,16 +15,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOk_Click(object sender, EventArgs e)
     {
+        //create new laptop instance
         clsLaptops newLaptop = new clsLaptops();
-        newLaptop.Model = txtLaptopModel.Text;
-        newLaptop.Manufacturer = txtLaptopManufacturer.Text;
-        newLaptop.Quantity = Convert.ToInt32(txtLaptopQuantity.Text);
-        newLaptop.Price = Convert.ToDouble(txtLaptopPrice.Text);
-        newLaptop.Reorder = chkLaptopReorder.Checked;
-        newLaptop.ReorderDate = Convert.ToDateTime(txtLaptopReorderDate.Text);
+        //update the model value
+        newLaptop.LaptopModel = txtLaptopModel.Text;
+        //update the manufacturer value
+        newLaptop.LaptopManufacturer = txtLaptopManufacturer.Text;
+        //update the quantity value
+        newLaptop.LaptopQuantity = Convert.ToInt32(txtLaptopQuantity.Text);
+        //update the price value
+        newLaptop.LaptopPrice = Convert.ToDouble(txtLaptopPrice.Text);
+        //update the reorder value
+        newLaptop.LaptopReorder = chkLaptopReorder.Checked;
+        //update the reorder date value
+        newLaptop.LaptopReorderDate = Convert.ToDateTime(txtLaptopReorderDate.Text);
 
-        Session["newLaptop"] = newLaptop;
+        // add the data to a session for later
+        Session["aLaptop"] = newLaptop;
 
+        //redirect to the viewer page
         Response.Redirect("LaptopsViewer.aspx");
     }
 }
