@@ -56,7 +56,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
             //create some test data to assign to the property
-            string TestData = ";
+            string TestData = "Ben Russell";
             //assign the data to the property
             AnStaff.StaffAddress = TestData;
             //test to see that the two values are the same

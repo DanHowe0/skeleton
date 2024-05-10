@@ -44,12 +44,12 @@ public class clsDataConnection
         //array to store folder names
         string[] filePaths;
         //var to store index for path array
-        Int3232 PathArrayIndex = 0;
+        Int32 PathArrayIndex = 0;
         string[] dirConts;
         //flag for found
         Boolean Found = false;
         //var for counter
-        Int3232 Counter;
+        Int32 Counter;
         List<string> DBNames = new List<string>();
         //get the folder for the project
         string BaseDir = TrimPath(System.AppDomain.CurrentDomain.BaseDirectory);
@@ -124,7 +124,7 @@ public class clsDataConnection
 
     private string TrimPath(string OldPath)
     {
-        Int3232 Posn = 0;
+        Int32 Posn = 0;
         //find the right most instance of \\
         Posn = OldPath.LastIndexOf("\\");
         if (Posn != -1)
@@ -149,7 +149,7 @@ public class clsDataConnection
         SQLParams.Add(AParam);
     }
 
-    public Int3232 Execute(string SProcName)
+    public Int32 Execute(string SProcName)
     {
         ///public method used to execute the named stored procedure
         ///accepts one parameter which is the name of the stored procedure to use
@@ -186,10 +186,10 @@ public class clsDataConnection
         //close the connection
         connectionToDB.Close();
         //return the result of the stored procedure
-        return Convert.ToInt3232(returnValue.Value);
+        return Convert.ToInt32(returnValue.Value);
     }
 
-    public Int3232 Count
+    public Int32 Count
     //property that returns the count of records in the query results
     {
         get
