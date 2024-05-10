@@ -11,7 +11,7 @@ namespace Testing2
         public void InstanceOk()
         {
             clsStaff AnStaff = new clsStaff();
-            Assert.IsNotNull( AnStaff );
+            Assert.IsNotNull(AnStaff);
         }
 
         [TestMethod]
@@ -20,7 +20,7 @@ namespace Testing2
             clsStaff AnStaff = new clsStaff();
             Boolean TestData = true;
             AnStaff.Active = TestData;
-            Assert.AreEqual( AnStaff.Active,TestData);
+            Assert.AreEqual(AnStaff.Active, TestData);
         }
         [TestMethod]
         public void DateAddedPropertyOK()
@@ -93,10 +93,167 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(AnStaff.StaffEmail, TestData);
         }
+        [TestMethod]
+        public void FindMethodOK()
+        { //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //create a variable to check the validation
+            Boolean Found = false;
+            //create some test data to use with the method 
+            Int32 StaffId = 1;
+            //invoke the method 
+            Found = AnStaff.Find(StaffId);
+            //test to see that the two values are the same
+            Assert.IsTrue(Found);
+        }
 
+        [TestMethod]
+        public void TestStaffIdFound()
+        { //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //create a variable to check the validation
+            Boolean Found = false;
+            // create a variable to record if data is ok 
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StaffId = 1;
+            //invoke thye method 
+            Found = AnStaff.Find(StaffId);
+            if (AnStaff.StaffId != 1)
+            {
+                OK = false;
+            }
+            //test to see that the two values are the same
+            Assert.IsTrue(OK);
 
+        }
 
+        [TestMethod]
+        public void TestActiveFound()
+        { //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //create a variable to check the validation
+            Boolean Found = false;
+            // create a variable to record if data is ok 
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StaffId = 1;
+            //invoke thye method 
+            Found = AnStaff.Find(StaffId);
+            //check active property 
+            if (AnStaff.Active != true)
+            {
+                OK = false;
+            }
+            //test to see that the two values are the same
+            Assert.IsTrue(OK);
 
+        }
+
+        [TestMethod]
+        public void TestDateAddedFound()
+        { //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //create a variable to check the validation
+            Boolean Found = false;
+            // create a variable to record if data is ok 
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StaffId = 1;
+            //invoke thye method 
+            Found = AnStaff.Find(StaffId);
+            if (AnStaff.DateAdded != Convert.ToDateTime("23/12/2022"))
+            {
+                OK = false;
+            }
+            //test to see that the two values are the same
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestStaffAddressFound()
+        {//create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //create a variable to check the validation
+            Boolean Found = false;
+            // create a variable to record if data is ok 
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StaffId = 1;
+            //invoke thye method 
+            Found = AnStaff.Find(StaffId);
+            if (AnStaff.StaffAddress != "123")
+            {
+                OK = false;
+            }
+            //test to see that the two values are the same
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void TestStaffNameFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //create a variable to check the validation
+            Boolean Found = false;
+            // create a variable to record if data is ok 
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StaffId = 1;
+            //invoke thye method 
+            Found = AnStaff.Find(StaffId);
+            if (AnStaff.StaffName != "Divyansh")
+            {
+                OK = false;
+            }
+            //test to see that the two values are the same
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestStaffPhoneNumberFound()
+        {//create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //create a variable to check the validation
+            Boolean Found = false;
+            // create a variable to record if data is ok 
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StaffId = 1;
+            //invoke thye method 
+            Found = AnStaff.Find(StaffId);
+            if (AnStaff.StaffPhoneNumber != "7867029044")
+            {
+                OK = false;
+            }
+            //test to see that the two values are the same
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void StaffEmailFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //create a variable to check the validation
+            Boolean Found = false;
+            // create a variable to record if data is ok 
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StaffId = 1;
+            //invoke thye method 
+            Found = AnStaff.Find(StaffId);
+            if (AnStaff.StaffEmail != "divyanshsingh1800@gmail.com")
+            {
+                OK = false;
+            }
+            //test to see that the two values are the same
+            Assert.IsTrue(OK);
+
+        }
     }
-
 }
+       
