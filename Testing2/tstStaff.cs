@@ -234,7 +234,7 @@ namespace Testing2
             //invoke thye method 
             Found = AnStaff.Find(StaffId);
             // check the phone mumber property
-            if (AnStaff.StaffPhoneNumber != "7867029044")
+            if (AnStaff.StaffPhoneNumber != "07867029044")
             {
                 OK = false;
             }
