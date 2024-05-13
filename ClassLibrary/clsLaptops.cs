@@ -7,7 +7,7 @@ namespace ClassLibrary
         // Private data members to store the laptop information
         private string mLaptopModel;             // Stores the model of the laptop
         private string mLaptopManufacturer;      // Stores the manufacturer of the laptop
-        private int mLaptopQuantity;             // Stores the quantity of this type of laptop in stock
+        private Int32 mLaptopQuantity;             // Stores the quantity of this type of laptop in stock
         private double mLaptopPrice;             // Stores the price of the laptop
         private bool mLaptopReorder;             // Indicates whether an automatic reorder is setup for this laptop type
         private DateTime mLaptopReorderDate;     // Stores the date of the next reorder for this laptop type
@@ -28,7 +28,7 @@ namespace ClassLibrary
         }
 
         // Public property to access and modify the quantity of laptops in stock
-        public int LaptopQuantity
+        public Int32 LaptopQuantity
         {
             get { return mLaptopQuantity; }     // Getter returns the laptop quantity
             set { mLaptopQuantity = value; }    // Setter sets the laptop quantity
@@ -62,7 +62,7 @@ namespace ClassLibrary
             set { mLaptopID = value; }          // Setter sets the laptops ID
         }
 
-        public bool Find(int laptopID)
+        public bool Find(Int32 laptopID)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();

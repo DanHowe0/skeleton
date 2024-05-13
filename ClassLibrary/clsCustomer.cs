@@ -38,12 +38,12 @@ namespace ClassLibrary
             }
             set
             {
-                //This line allows data into the attribute
+                //This line allows data Int32o the attribute
                 mHas2SV = value;
             }
         }
 
-        public int CustomerNo
+        public Int32 CustomerNo
         {
             get
             {
@@ -52,7 +52,7 @@ namespace ClassLibrary
             }
             set
             {
-                //This line allows data into the attribute
+                //This line allows data Int32o the attribute
                 mCustomerNo = value;
             }
         }
@@ -65,7 +65,7 @@ namespace ClassLibrary
             }
             set
             {
-                //This line allows data into the attribute
+                //This line allows data Int32o the attribute
                 mCustFirstName = value;
             }
         }
@@ -79,7 +79,7 @@ namespace ClassLibrary
             }
             set
             {
-                //This line allows data into the attribute
+                //This line allows data Int32o the attribute
                 mCustLastName = value;
             }
         }
@@ -93,7 +93,7 @@ namespace ClassLibrary
             }
             set
             {
-                //This line allows data into the attribute
+                //This line allows data Int32o the attribute
                 mCustDOB = value;
             }
         }
@@ -107,7 +107,7 @@ namespace ClassLibrary
             }
             set
             {
-                //This line allows data into the attribute
+                //This line allows data Int32o the attribute
                 mCustEmail = value;
             }
         }
@@ -120,12 +120,12 @@ namespace ClassLibrary
             }
             set
             {
-                //This line allows data into the attribute
+                //This line allows data Int32o the attribute
                 mCustAddress = value;
             }
         }
 
-        public bool Find(int CustomerNo)
+        public bool Find(Int32 CustomerNo)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
