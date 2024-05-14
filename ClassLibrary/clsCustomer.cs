@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
+using System.Net.Security;
 
 namespace ClassLibrary
 {
@@ -155,6 +157,97 @@ namespace ClassLibrary
             }
 
         }
+
+        //function for the public validation
+        public string Valid(string custFirstName, string custLastName, string custDOB, string custEmail, string custAddress)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary varaible to store the date values
+            DateTime DateTemp;
+            //if the first name is blank
+            if (custFirstName.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The customer first name may not be blank : ";
+            }
+            //if the customer first name is greater then 50 char
+            if (custFirstName.Length > 50)
+            {
+                //record the error 
+                Error = Error + " the first name must be less than 50 chracters : "; 
+            }
+
+            //if the last name is blank 
+            if (custLastName.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The customer last name may not be blank : ";
+            }
+            //if the customer last name is greater then 50 char
+            if (custLastName.Length > 50)
+            {
+                //record the error 
+                Error = Error + " the last name must be less than 50 chracters : ";
+            }
+
+            //if the email is blank
+            if (custEmail.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The email may not be blank : ";
+            }
+            //if the customer email is greater then 50 char
+            if (custEmail.Length > 50)
+            {
+                //record the error 
+                Error = Error + " the email must be less than 50 chracters : ";
+            }
+
+            //if the address is blank
+            if (custAddress.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The address may not be blank : ";
+            }
+            //if the customer address is greater then 50 char
+            if (custAddress.Length > 50)
+            {
+                //record the error 
+                Error = Error + " the address must be less than 50 chracters : ";
+            }
+
+            //create an instance of DateTime to compare with date temp 
+            //in the if statement
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            { 
+                //copy the dateAdded value to the DateTemp varibale
+                DateTemp = Convert.ToDateTime(custDOB);
+                //check to see if the date is less then today's date
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The DOB must be 15 years or older : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not valid date : ";
+            }
+
+            //return any error messages 
+            return Error;
+
+        }
+
+
+
+
 
     }
 }
