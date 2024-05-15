@@ -8,29 +8,24 @@ namespace ClassLibrary
     {
         //private data memeber for the customer no 
         private Int32 mCustomerNo;
+        //CustomerNo public property
+        public Int32 CustomerNo
+        {
+            get
+            {
+                //this line sneds the data out of the attribute
+                return mCustomerNo;
+            }
+            set
+            {
+                //This line allows data Int32o the attribute
+                mCustomerNo = value;
+            }
+        }
 
         //private data memeber for the 2SV
         private Boolean mHas2SV;
-
-        //private for first name
-        private String mCustFirstName;
-
-        //private for last name
-        private string mCustLastName;
-
-        //priavte for DOB
-        private DateTime mCustDOB;
-
-        //private for email
-        private string mCustEmail;
-
-        //private for address
-        private string mCustAddress; 
-
-        public clsCustomer()
-        {
-        }
-
+        //Has2SV public property
         public bool Has2SV
         {
             get
@@ -45,19 +40,9 @@ namespace ClassLibrary
             }
         }
 
-        public Int32 CustomerNo
-        {
-            get
-            {
-                //this line sneds the data out of the attribute
-                return mCustomerNo;
-            }
-            set
-            {
-                //This line allows data Int32o the attribute
-                mCustomerNo = value;
-            }
-        }
+        //private for first name
+        private String mCustFirstName;
+        //First name public property
         public string CustFirstName
         {
             get
@@ -72,6 +57,9 @@ namespace ClassLibrary
             }
         }
 
+        //private for last name
+        private string mCustLastName;
+        //Last name public property
         public string CustLastName
         {
             get
@@ -86,6 +74,9 @@ namespace ClassLibrary
             }
         }
 
+        //priavte for DOB
+        private DateTime mCustDOB;
+        //DOB public property
         public DateTime CustDOB
         {
             get
@@ -100,6 +91,9 @@ namespace ClassLibrary
             }
         }
 
+        //private for email
+        private string mCustEmail;
+        //email public property
         public string CustEmail
         {
             get
@@ -113,6 +107,9 @@ namespace ClassLibrary
                 mCustEmail = value;
             }
         }
+        //private for address
+        private string mCustAddress; 
+        //address public property
         public string CustAddress
         {
             get
@@ -225,13 +222,13 @@ namespace ClassLibrary
                 //copy the dateAdded value to the DateTemp varibale
                 DateTemp = Convert.ToDateTime(custDOB);
                 //check to see if the date is less then today's date
-                if (DateTemp > DateComp)
-                {
-                    Error = Error + "The date cannot be in the future : ";
-                }
                 if (DateTemp < DateComp)
                 {
                     Error = Error + "The DOB must be 15 years or older : ";
+                }
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The date cannot be in the future : ";
                 }
             }
             catch

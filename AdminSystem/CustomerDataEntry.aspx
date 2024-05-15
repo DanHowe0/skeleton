@@ -31,11 +31,11 @@
         <p>
             &nbsp;</p>
         <asp:CheckBox ID="chkHas2SV" runat="server" style="z-index: 1; left: 150px; top: 234px; position: absolute" Text="Has2SV" />
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 18px; top: 234px; position: absolute"></asp:Label>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 20px; top: 263px; position: absolute"></asp:Label>
         <p>
-            <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 18px; top: 277px; position: absolute; height: 20px; width: 33px" Text="Ok" />
+            <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 16px; top: 308px; position: absolute; height: 20px; width: 33px" Text="Ok" />
         </p>
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 64px; top: 277px; position: absolute; height: 19px; width: 60px; margin-bottom: 2px" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 66px; top: 309px; position: absolute; height: 19px; width: 60px; margin-bottom: 2px" Text="Cancel" />
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 281px; top: 32px; position: absolute; width: 53px" Text="Find" />
     </form>
 </body>
