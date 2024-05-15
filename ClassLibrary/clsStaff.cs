@@ -122,6 +122,69 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string dateAdded, string staffAddress, string staffName, string staffPhoneNumber, string staffEmail)
+        {//create  a string variable to store the error 
+           String Error = "";
+            //temporary variable to store date 
+            DateTime DateComp = DateTime.Now.Date;
+            DateTime DateTemp;   
+            // if the address is blank
+            if(staffAddress.Length == 0)
+            {
+                //record the error 
+                Error = Error + " The staff address may not be blank : ";
+            }
+            //if the house no is greater than 75
+            if (staffAddress.Length > 75) {
+                //record the error
+                Error = Error + "The staff address must be less than 75 characters : ";
+            }
+            try
+            {
+                //copy the dateAdded value to the DateTime variable 
+                DateTemp = Convert.ToDateTime(dateAdded);
+                // compare dateAdded with DateComp
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "date cannot be in past : ";
+                }
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "Date can't be in future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : "; 
+            }
+            if(staffName.Length == 0) {
+                Error = Error + "StaffName should not be empty : ";
+            }
+            if (staffPhoneNumber.Length == 0)
+            {
+                Error = Error + "StaffPhoneNumber should not be empty : ";
+            }
+            if (staffEmail.Length == 0)
+            {
+                Error = Error + "StaffEmail should not be empty : ";
+            }
+            if (staffName.Length > 45)
+            { 
+                Error = Error + "StaffName should be less than 45 characters : ";
+            }
+            if (staffPhoneNumber.Length > 18)
+            {
+                Error = Error + "StaffPhoneNumber should be less than 18 characters : ";
+            }
+            if (staffEmail.Length > 30)
+            {
+                Error = Error + "StaffEamil should not more than 30 characters : ";
+            }
+            //return any error messages
+            return Error;
+
+        }
     }
 }
 
