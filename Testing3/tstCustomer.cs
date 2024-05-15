@@ -777,7 +777,7 @@ namespace Testing3
             DateTime TestDate;
             //set the date to todays date
             TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 1000 years
+            //change the date to whatever the date is 15 years ago and 1 day ago
             TestDate = TestDate.AddYears(-15).AddDays(-1);
             //convert the date variable to a string variable
             string CustDOB = TestDate.ToString();
@@ -798,7 +798,7 @@ namespace Testing3
             DateTime TestDate;
             //set the date to todays date
             TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 100 years
+            //change the date to whatever the date is 14 years ago and one day ago
             TestDate = TestDate.AddYears(-14).AddDays(-1);
             //convert the date variable to a string variable
             string CustDOB = TestDate.ToString();
@@ -819,8 +819,8 @@ namespace Testing3
             DateTime TestDate;
             //set the date to todays date
             TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 100 years
-            TestDate = TestDate.AddYears(-14);
+            //change the date to whatever the date is 15 years ago
+            TestDate = TestDate.AddYears(-24);
             //convert the date variable to a string variable
             string CustDOB = TestDate.ToString();
             //invoke the method
@@ -840,7 +840,7 @@ namespace Testing3
             DateTime TestDate;
             //set the date to todays date
             TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 100 years
+            //change the date to whatever the year was 14 years ago and 1 day a head is. 
             TestDate = TestDate.AddYears(-14).AddDays(1);
             //convert the date variable to a string variable
             string CustDOB = TestDate.ToString();
@@ -861,7 +861,7 @@ namespace Testing3
             DateTime TestDate;
             //set the date to todays date
             TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 100 years
+            //change the date to whatever the date is less 110 years
             TestDate = TestDate.AddYears(-110);
             //convert the date variable to a string variable
             string CustDOB = TestDate.ToString();
