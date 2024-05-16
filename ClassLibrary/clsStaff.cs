@@ -108,7 +108,7 @@ namespace ClassLibrary
                 mStaffName = Convert.ToString(DB.DataTable.Rows[0]["StaffName"]);
                 mStaffPhoneNumber = Convert.ToString(DB.DataTable.Rows[0]["StaffPhoneNumber"]);
                 mStaffEmail = Convert.ToString(DB.DataTable.Rows[0]["StaffEmail"]);
-                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["StaffDateofBirth"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]); 
 
                 //return true that everything worked ok 
