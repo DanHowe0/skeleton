@@ -9,7 +9,7 @@ namespace Testing2
     {
         //Good Test Data
         //create some test data to pass the method
-        string DateAdded = DateTime.Now.ToShortDateString();
+        string DateAdded = DateTime.Now.Date.ToString();
         string StaffAddress = "Ben Russell";
         string StaffName = "Divyansh";
         string StaffPhoneNumber = "07867029044";
@@ -39,7 +39,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
             //create some test data to assign to the property
-            DateTime TestData = DateTime.Now.Date;
+            DateTime TestData = DateTime.Parse("28/08/2003");
             //assign the data to the property
             AnStaff.DateAdded = TestData;
             //test to see that the two values are the same
