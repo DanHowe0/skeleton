@@ -36,13 +36,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnStaff.Valid(dateadded, staffaddress, staffname, staffphonenumber, staffemail);
         if (Error == "")
         {
+            AnStaff.Active = chkActive.Checked;
             AnStaff.StaffName = staffname;
             AnStaff.StaffEmail = staffemail;
             AnStaff.StaffAddress = staffaddress;    
             AnStaff.StaffPhoneNumber = staffphonenumber;
             AnStaff.DateAdded = Convert.ToDateTime(dateadded);
-            Session["AnStaff"] = AnStaff;
-            Response.Redirect("StaffViewer.aspx");
+            clsStaffCollection StaffList = new clsStaffCollection();
+            StaffList.ThisStaff = AnStaff;
+            StaffList.Add();
+            
+            Response.Redirect("StaffList.aspx");
         }
         else
         {
