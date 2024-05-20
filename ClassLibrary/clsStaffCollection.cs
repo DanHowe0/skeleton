@@ -27,6 +27,7 @@ namespace ClassLibrary
             }
         }
         List<clsStaff> mStaffList = new List<clsStaff>();
+        clsStaff mThisStaff = new clsStaff();
         public List<clsStaff> StaffList
         {
             get
@@ -43,7 +44,29 @@ namespace ClassLibrary
             get { return mStaffList.Count; }
             set { }
         }
-       
-       
+
+        public clsStaff ThisStaff
+        {
+            get
+            { return mThisStaff; }
+            set 
+            { mThisStaff = value; }
+        }
+        public int Add()
+        {
+            //adds a record to the database based on the values of mThisAddress
+            //connects to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set parameters for the stored procedure
+            DB.AddParameter("@StaffAddress", mThisStaff.StaffAddress);
+            DB.AddParameter("@StaffName", mThisStaff.StaffName);
+            DB.AddParameter("@StaffEmail", mThisStaff.StaffEmail);
+            DB.AddParameter("@StaffPhoneNumber", mThisStaff.StaffPhoneNumber);
+            DB.AddParameter("@DateAdded", mThisStaff.DateAdded);
+            DB.AddParameter("@Active", mThisStaff.Active);
+
+            return DB.Execute("sproc_tblStaff_Insert");
+
+        }
     }
 }
