@@ -17,24 +17,46 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create new laptop instance
         clsLaptops newLaptop = new clsLaptops();
-        //update the model value
-        newLaptop.LaptopModel = txtLaptopModel.Text;
-        //update the manufacturer value
-        newLaptop.LaptopManufacturer = txtLaptopManufacturer.Text;
-        //update the quantity value
-        newLaptop.LaptopQuantity = Convert.ToInt32(txtLaptopQuantity.Text);
-        //update the price value
-        newLaptop.LaptopPrice = Convert.ToDouble(txtLaptopPrice.Text);
-        //update the reorder value
-        newLaptop.LaptopReorder = chkLaptopReorder.Checked;
-        //update the reorder date value
-        newLaptop.LaptopReorderDate = Convert.ToDateTime(txtLaptopReorderDate.Text);
+        //capture the model value
+        string LaptopModel = txtLaptopModel.Text;
+        //capture the manufacturer value
+        string LaptopManufacturer = txtLaptopManufacturer.Text;
+        //capture the quantity value
+        string LaptopQuantity = txtLaptopQuantity.Text;
+        //capture the price value
+        string LaptopPrice = txtLaptopPrice.Text;
+        //capture the reorder value
+        string LaptopReorder = chkLaptopReorder.Text;
+        //capture the reorder date value
+        string LaptopReorderDate = txtLaptopReorderDate.Text;
+        //store any error messages
+        string Error = "";
+        //validate the data
+        Error = newLaptop.Valid(LaptopModel, LaptopManufacturer, LaptopQuantity, LaptopPrice, LaptopReorderDate);
+        if (Error == "")
+        {
+            //capture the model value
+            newLaptop.LaptopModel = txtLaptopModel.Text;
+            //capture the manufacturer value
+            newLaptop.LaptopManufacturer = txtLaptopManufacturer.Text;
+            //capture the quantity value
+            newLaptop.LaptopQuantity = Convert.ToInt32(txtLaptopQuantity.Text);
+            //capture the price value
+            newLaptop.LaptopPrice = Convert.ToInt32(txtLaptopPrice.Text);
+            //capture the reorder value
+            newLaptop.LaptopReorder = Convert.ToBoolean(chkLaptopReorder.Text);
+            //capture the reorder date value
+            newLaptop.LaptopReorderDate = Convert.ToDateTime(txtLaptopReorderDate.Text);
+            // add the data to a session for later
+            Session["aLaptop"] = newLaptop;
 
-        // add the data to a session for later
-        Session["aLaptop"] = newLaptop;
-
-        //redirect to the viewer page
-        Response.Redirect("LaptopsViewer.aspx");
+            //redirect to the viewer page
+            Response.Redirect("LaptopsViewer.aspx");
+        } else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
