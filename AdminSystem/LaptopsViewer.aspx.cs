@@ -11,10 +11,10 @@ public partial class _1Viewer : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //create a new laptop instance
-        clsLaptops aLaptop = new clsLaptops();
+        clsLaptops aLaptop;
 
         //retrieve data from the session
-        aLaptop = (clsLaptops)Session["newLaptop"];
+        aLaptop = (clsLaptops) Session["aLaptop"];
 
         //write out all the data
         Response.Write(aLaptop.LaptopModel + "<br>");

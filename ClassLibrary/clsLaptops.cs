@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace ClassLibrary
 {
@@ -62,7 +65,9 @@ namespace ClassLibrary
             set { mLaptopID = value; }          // Setter sets the laptops ID
         }
 
-        public bool Find(Int32 laptopID)
+
+        // function to find an entry from the database
+        public bool Find(int laptopID)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
@@ -89,8 +94,106 @@ namespace ClassLibrary
             {
                 //return false indicating there was a problem
                 return false;
+            }   
+        }
+
+        public string Valid(string laptopModel, string laptopManufacturer, string laptopQuantity, string laptopPrice, string laptopReorderDate)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //if the laptopModel is blank
+            if (laptopModel.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Model may not be blank : ";
+            } 
+            //if the laptopModel is greater than 50 characters
+            if (laptopModel.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Model must not be more than 50 characters : ";
+            }
+
+
+            //if the laptopManufacturer is blank
+            if (laptopManufacturer.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Manufacturer may not be blank : ";
+            }
+            //if the laptopManufacturer is greater than 50 characters
+            if (laptopManufacturer.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Manufacturer must not be more than 50 characters : ";
             }
             
+            //create an instance of DateTime to compare with DateTemp
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                //copy the laptopReorderDate to DateTemp
+                DateTime DateTemp = Convert.ToDateTime(laptopReorderDate);
+
+                if (DateTemp < DateComp.AddDays(30))
+                {
+                    //record the error
+                    Error += "The date must be 30 days or more away : ";
+                }
+                if (DateTemp > DateComp.AddYears(1))
+                {
+                    //record the error
+                    Error += "The date must be less than one year away : ";
+                }
+            } catch {
+                //record the error
+                Error += "The date must be a valid date : ";
+            }
+
+            try
+            {
+                //copy the laptopQuantity to QuantityTemp
+                int QuantityTemp = Convert.ToInt32(laptopQuantity);
+                if (100 < QuantityTemp)
+                {
+                    //record the error
+                    Error += "The quantity must be lower than or equal to 100 : ";
+                }
+                if (0 > QuantityTemp)
+                {
+                    //record the error
+                    Error += "The quantity must be higher than or equal to 0 : ";
+                }
+            } catch
+            {
+                //record the error
+                Error += "Quantity must be a valid integer : ";
+            }
+
+            try
+            {
+                
+                //copy the laptopPrice to PriceTemp
+                double PriceTemp = Math.Round(Convert.ToDouble(laptopPrice), 2);
+                if (1000000.00 < PriceTemp)
+                {
+                    //record the error
+                    Error += "The quantity must be lower than or equal to 1,000,000 : ";
+                }
+                if (0.00 > PriceTemp)
+                {
+                    //record the error
+                    Error += "The quantity must be higher than or equal to 0 : ";
+                }
+            } catch
+            {
+                //record the error
+                Error += "Price must be a valid number : ";
+            }
+
+            //return any error messages
+            return Error;
         }
     }
 
