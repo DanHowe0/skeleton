@@ -10,7 +10,7 @@ namespace Testing3
         //good test data 
         string CustFirstName = "Bill";
         string CustLastName = "Will";
-        string CustDOB = DateTime.Now.ToShortDateString();
+        string CustDOB = DateTime.Now.AddYears(-15).ToShortDateString();
         string CustEmail = "bill@gmail.com";
         string CustAddress = "some address";
 
@@ -260,7 +260,7 @@ namespace Testing3
             //string varaible to store any error message
             string Error = "";
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -275,7 +275,7 @@ namespace Testing3
             //test data to pass
             string CustFirstName = ""; //should trigger error
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -290,7 +290,7 @@ namespace Testing3
             //test data to pass
             string CustFirstName = "a"; //should trigger error
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -305,7 +305,7 @@ namespace Testing3
             //test data to pass
             string CustFirstName = "aa"; //should trigger error
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -319,9 +319,9 @@ namespace Testing3
             string Error = "";
             //test data to pass
             string CustFirstName = ""; //should trigger error
-            CustFirstName = CustFirstName.PadRight(49, 'a');
+            CustFirstName = CustFirstName.PadRight(14, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -335,9 +335,9 @@ namespace Testing3
             string Error = "";
             //test data to pass
             string CustFirstName = ""; //should trigger error
-            CustFirstName = CustFirstName.PadRight(50, 'a');
+            CustFirstName = CustFirstName.PadRight(15, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -351,9 +351,9 @@ namespace Testing3
             string Error = "";
             //test data to pass
             string CustFirstName = ""; //should trigger error
-            CustFirstName = CustFirstName.PadRight(25, 'a');
+            CustFirstName = CustFirstName.PadRight(7, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -367,9 +367,9 @@ namespace Testing3
             string Error = "";
             //test data to pass
             string CustFirstName = ""; //should trigger error
-            CustFirstName = CustFirstName.PadRight(51, 'a');
+            CustFirstName = CustFirstName.PadRight(16, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -385,7 +385,7 @@ namespace Testing3
             string CustFirstName = ""; //should trigger error
             CustFirstName = CustFirstName.PadRight(500, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -401,7 +401,7 @@ namespace Testing3
             //test data to pass
             string CustLastName = ""; //should trigger error
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -416,7 +416,7 @@ namespace Testing3
             //test data to pass
             string CustLastName = "a"; //should trigger error
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -431,7 +431,7 @@ namespace Testing3
             //test data to pass
             string CustLastName = "aa"; //should trigger error
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -445,9 +445,9 @@ namespace Testing3
             string Error = "";
             //test data to pass
             string CustLastName = ""; //should trigger error
-            CustLastName = CustLastName.PadRight(49, 'a');
+            CustLastName = CustLastName.PadRight(14, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -461,9 +461,9 @@ namespace Testing3
             string Error = "";
             //test data to pass
             string CustLastName = ""; //should trigger error
-            CustLastName = CustLastName.PadRight(50, 'a');
+            CustLastName = CustLastName.PadRight(15, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -477,9 +477,9 @@ namespace Testing3
             string Error = "";
             //test data to pass
             string CustLastName = ""; //should trigger error
-            CustLastName = CustLastName.PadRight(25, 'a');
+            CustLastName = CustLastName.PadRight(7, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -493,9 +493,9 @@ namespace Testing3
             string Error = "";
             //test data to pass
             string CustLastName = ""; //should trigger error
-            CustLastName = CustLastName.PadRight(51, 'a');
+            CustLastName = CustLastName.PadRight(16, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -511,7 +511,7 @@ namespace Testing3
             string CustLastName = ""; //should trigger error
             CustLastName = CustLastName.PadRight(500, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -526,7 +526,7 @@ namespace Testing3
             //test data to pass
             string CustEmail = ""; //should trigger error
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -541,7 +541,7 @@ namespace Testing3
             //test data to pass
             string CustEmail = "a"; //should trigger error
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -556,7 +556,7 @@ namespace Testing3
             //test data to pass
             string CustEmail = "aa"; //should trigger error
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -570,9 +570,9 @@ namespace Testing3
             string Error = "";
             //test data to pass
             string CustEmail = ""; //should trigger error
-            CustEmail = CustEmail.PadRight(49, 'a');
+            CustEmail = CustEmail.PadRight(19, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -585,10 +585,10 @@ namespace Testing3
             //string varaible to store any error message
             string Error = "";
             //test data to pass
-            string CustEmail = ""; //should trigger error
-            CustEmail = CustEmail.PadRight(50, 'a');
+            string CustEmail = ""; //should pass
+            CustEmail = CustEmail.PadRight(20, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -601,10 +601,10 @@ namespace Testing3
             //string varaible to store any error message
             string Error = "";
             //test data to pass
-            string CustEmail = ""; //should trigger error
-            CustEmail = CustEmail.PadRight(25, 'a');
+            string CustEmail = ""; //should pass
+            CustEmail = CustEmail.PadRight(10, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -618,9 +618,9 @@ namespace Testing3
             string Error = "";
             //test data to pass
             string CustEmail = ""; //should trigger error
-            CustEmail = CustEmail.PadRight(51, 'a');
+            CustEmail = CustEmail.PadRight(21, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -636,7 +636,7 @@ namespace Testing3
             string CustEmail = ""; //should trigger error
             CustEmail = CustEmail.PadRight(500, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -651,7 +651,7 @@ namespace Testing3
             //test data to pass
             string CustAddress = ""; //should trigger error
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -664,9 +664,9 @@ namespace Testing3
             //string varaible to store any error message
             string Error = "";
             //test data to pass
-            string CustAddress = "a"; //should trigger error
+            string CustAddress = "a"; //should pass
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -679,9 +679,9 @@ namespace Testing3
             //string varaible to store any error message
             string Error = "";
             //test data to pass
-            string CustAddress = "aa"; //should trigger error
+            string CustAddress = "aa"; //should pass
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -694,10 +694,10 @@ namespace Testing3
             //string varaible to store any error message
             string Error = "";
             //test data to pass
-            string CustAddress = ""; //should trigger error
-            CustAddress = CustAddress.PadRight(49, 'a');
+            string CustAddress = ""; //should pass
+            CustAddress = CustAddress.PadRight(19, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -710,10 +710,10 @@ namespace Testing3
             //string varaible to store any error message
             string Error = "";
             //test data to pass
-            string CustAddress = ""; //should trigger error
-            CustAddress = CustAddress.PadRight(50, 'a');
+            string CustAddress = ""; //should pass
+            CustAddress = CustAddress.PadRight(20, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -726,10 +726,10 @@ namespace Testing3
             //string varaible to store any error message
             string Error = "";
             //test data to pass
-            string CustAddress = ""; //should trigger error
-            CustAddress = CustAddress.PadRight(25, 'a');
+            string CustAddress = ""; //should pass
+            CustAddress = CustAddress.PadRight(10, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -743,9 +743,9 @@ namespace Testing3
             string Error = "";
             //test data to pass
             string CustAddress = ""; //should trigger error
-            CustAddress = CustAddress.PadRight(51, 'a');
+            CustAddress = CustAddress.PadRight(21, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -761,7 +761,7 @@ namespace Testing3
             string CustAddress = ""; //should trigger error
             CustAddress = CustAddress.PadRight(500, 'a');
             //invoke method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -777,12 +777,12 @@ namespace Testing3
             DateTime TestDate;
             //set the date to todays date
             TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is 15 years ago and 1 day ago
-            TestDate = TestDate.AddYears(-15).AddDays(-1);
+            //change the date to whatever the date is 200 years ago
+            TestDate = TestDate.AddYears(-200);
             //convert the date variable to a string variable
             string CustDOB = TestDate.ToString();
             //invoke the method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -798,14 +798,14 @@ namespace Testing3
             DateTime TestDate;
             //set the date to todays date
             TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is 14 years ago and one day ago
-            TestDate = TestDate.AddYears(-14).AddDays(-1);
+            //change the date to whatever the date is 123 years ago
+            TestDate = TestDate.AddYears(-123);
             //convert the date variable to a string variable
             string CustDOB = TestDate.ToString();
             //invoke the method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -819,14 +819,14 @@ namespace Testing3
             DateTime TestDate;
             //set the date to todays date
             TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is 15 years ago
-            TestDate = TestDate.AddYears(-24);
+            //change the date to whatever the date is 124 years ago
+            TestDate = TestDate.AddYears(-124);
             //convert the date variable to a string variable
             string CustDOB = TestDate.ToString();
             //invoke the method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -840,14 +840,76 @@ namespace Testing3
             DateTime TestDate;
             //set the date to todays date
             TestDate = DateTime.Now.Date;
-            //change the date to whatever the year was 14 years ago and 1 day a head is. 
-            TestDate = TestDate.AddYears(-14).AddDays(1);
+            //change the date to whatever the year was 125 years ago
+            TestDate = TestDate.AddYears(-125);
             //convert the date variable to a string variable
             string CustDOB = TestDate.ToString();
             //invoke the method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DOBMaxMinusOne()
+        {
+            //create an instance of the class we want
+            clsCustomer AnCustomer = new clsCustomer();
+            //string varaible to store any error message
+            string Error = "";
+            //create a varible to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is 14 years ago
+            TestDate = TestDate.AddYears(-14);
+            //convert the date variable to a string variable
+            string CustDOB = TestDate.ToString();
+            //invoke the method
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DOBMax()
+        {
+            //create an instance of the class we want
+            clsCustomer AnCustomer = new clsCustomer();
+            //string varaible to store any error message
+            string Error = "";
+            //create a varible to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the year was 15 years ago 
+            TestDate = TestDate.AddYears(-15);
+            //convert the date variable to a string variable
+            string CustDOB = TestDate.ToString();
+            //invoke the method
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        public void DOBMaxPlusOne()
+        {
+            //create an instance of the class we want
+            clsCustomer AnCustomer = new clsCustomer();
+            //string varaible to store any error message
+            string Error = "";
+            //create a varible to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the year was 16 years ago 
+            TestDate = TestDate.AddYears(-16);
+            //convert the date variable to a string variable
+            string CustDOB = TestDate.ToString();
+            //invoke the method
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -861,12 +923,12 @@ namespace Testing3
             DateTime TestDate;
             //set the date to todays date
             TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 110 years
-            TestDate = TestDate.AddYears(-110);
+            //change the date to whatever the date is in 1000 years
+            TestDate = TestDate.AddYears(1000);
             //convert the date variable to a string variable
             string CustDOB = TestDate.ToString();
             //invoke the method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -881,7 +943,7 @@ namespace Testing3
             //set the DOB to a non date value
             string CustDOB = "this is not a date";
             //invoke the method
-            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+            Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
