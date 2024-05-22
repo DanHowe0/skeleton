@@ -129,7 +129,7 @@ public class clsDataConnection
         Posn = OldPath.LastIndexOf("\\");
         if (Posn != -1)
         {
-            //split the path at that point
+            //split the path at that poInt32
             OldPath = OldPath.Substring(0, Posn);
         }
         else
@@ -162,7 +162,7 @@ public class clsDataConnection
         SqlCommand dataCommand = new SqlCommand(SProcName, connectionToDB);
         //add the parameters to the command builder
         //loop through each parameter
-        for (int Counter = 0; Counter < SQLParams.Count; Counter += 1)
+        for (Int32 Counter = 0; Counter < SQLParams.Count; Counter += 1)
         {
             //add it to the command builder
             dataCommand.Parameters.Add(SQLParams[Counter]);

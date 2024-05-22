@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
+using System.Net.Security;
 
 namespace ClassLibrary
 {
@@ -6,29 +8,24 @@ namespace ClassLibrary
     {
         //private data memeber for the customer no 
         private Int32 mCustomerNo;
+        //CustomerNo public property
+        public Int32 CustomerNo
+        {
+            get
+            {
+                //this line sneds the data out of the attribute
+                return mCustomerNo;
+            }
+            set
+            {
+                //This line allows data Int32o the attribute
+                mCustomerNo = value;
+            }
+        }
 
         //private data memeber for the 2SV
         private Boolean mHas2SV;
-
-        //private for first name
-        private String mCustFirstName;
-
-        //private for last name
-        private string mCustLastName;
-
-        //priavte for DOB
-        private DateTime mCustDOB;
-
-        //private for email
-        private string mCustEmail;
-
-        //private for address
-        private string mCustAddress; 
-
-        public clsCustomer()
-        {
-        }
-
+        //Has2SV public property
         public bool Has2SV
         {
             get
@@ -38,24 +35,14 @@ namespace ClassLibrary
             }
             set
             {
-                //This line allows data into the attribute
+                //This line allows data Int32o the attribute
                 mHas2SV = value;
             }
         }
 
-        public int CustomerNo
-        {
-            get
-            {
-                //this line sneds the data out of the attribute
-                return mCustomerNo;
-            }
-            set
-            {
-                //This line allows data into the attribute
-                mCustomerNo = value;
-            }
-        }
+        //private for first name
+        private String mCustFirstName;
+        //First name public property
         public string CustFirstName
         {
             get
@@ -65,11 +52,14 @@ namespace ClassLibrary
             }
             set
             {
-                //This line allows data into the attribute
+                //This line allows data Int32o the attribute
                 mCustFirstName = value;
             }
         }
 
+        //private for last name
+        private string mCustLastName;
+        //Last name public property
         public string CustLastName
         {
             get
@@ -79,11 +69,14 @@ namespace ClassLibrary
             }
             set
             {
-                //This line allows data into the attribute
+                //This line allows data Int32o the attribute
                 mCustLastName = value;
             }
         }
 
+        //priavte for DOB
+        private DateTime mCustDOB;
+        //DOB public property
         public DateTime CustDOB
         {
             get
@@ -93,11 +86,14 @@ namespace ClassLibrary
             }
             set
             {
-                //This line allows data into the attribute
+                //This line allows data Int32o the attribute
                 mCustDOB = value;
             }
         }
 
+        //private for email
+        private string mCustEmail;
+        //email public property
         public string CustEmail
         {
             get
@@ -107,10 +103,13 @@ namespace ClassLibrary
             }
             set
             {
-                //This line allows data into the attribute
+                //This line allows data Int32o the attribute
                 mCustEmail = value;
             }
         }
+        //private for address
+        private string mCustAddress; 
+        //address public property
         public string CustAddress
         {
             get
@@ -120,12 +119,12 @@ namespace ClassLibrary
             }
             set
             {
-                //This line allows data into the attribute
+                //This line allows data Int32o the attribute
                 mCustAddress = value;
             }
         }
 
-        public bool Find(int CustomerNo)
+        public bool Find(Int32 CustomerNo)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
@@ -155,6 +154,97 @@ namespace ClassLibrary
             }
 
         }
+
+        //function for the public validation
+        public string Valid(string custFirstName, string custLastName, string custDOB, string custEmail, string custAddress)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary varaible to store the date values
+            DateTime DateTemp;
+            //if the first name is blank
+            if (custFirstName.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The customer first name may not be blank : ";
+            }
+            //if the customer first name is greater then 50 char
+            if (custFirstName.Length > 50)
+            {
+                //record the error 
+                Error = Error + " the first name must be less than 50 chracters : "; 
+            }
+
+            //if the last name is blank 
+            if (custLastName.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The customer last name may not be blank : ";
+            }
+            //if the customer last name is greater then 50 char
+            if (custLastName.Length > 50)
+            {
+                //record the error 
+                Error = Error + " the last name must be less than 50 chracters : ";
+            }
+
+            //if the email is blank
+            if (custEmail.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The email may not be blank : ";
+            }
+            //if the customer email is greater then 50 char
+            if (custEmail.Length > 50)
+            {
+                //record the error 
+                Error = Error + " the email must be less than 50 chracters : ";
+            }
+
+            //if the address is blank
+            if (custAddress.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The address may not be blank : ";
+            }
+            //if the customer address is greater then 50 char
+            if (custAddress.Length > 50)
+            {
+                //record the error 
+                Error = Error + " the address must be less than 50 chracters : ";
+            }
+
+            //create an instance of DateTime to compare with date temp 
+            //in the if statement
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            { 
+                //copy the dateAdded value to the DateTemp varibale
+                DateTemp = Convert.ToDateTime(custDOB);
+                //check to see if the date is less then today's date
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The DOB must be 15 years or older : ";
+                }
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not valid date : ";
+            }
+
+            //return any error messages 
+            return Error;
+
+        }
+
+
+
+
 
     }
 }
