@@ -8,9 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //varaible to store the PK within page loader scope
+    Int32 CustomerNo;
     protected void Page_Load(object sender, EventArgs e)
     {
-     
+        //get the number of the address to be processed
+        CustomerNo = Convert.ToInt32(Session["CustomerNo"]);
+        if (IsPostBack == false)
+        {
+            //if this is the not a new record
+            if (CustomerNo != -1)
+            {
+                //display the current data for the record
+                DisplayCustomer();
+            }
+        }
+    }
+
+    void DisplayCustomer()
+    {
+        //create an instance of the address book
+        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+        //find the record to update
+        CustomerBook.ThisCustomer.Find(CustomerNo);
+        //display the data for the record
+        txtCustomerNo.Text = CustomerBook.ThisCustomer.CustomerNo.ToString();
+        txtFirstName.Text = CustomerBook.ThisCustomer.CustFirstName.ToString();
+        txtLastName.Text = CustomerBook.ThisCustomer.CustLastName.ToString();
+        txtDOB.Text = CustomerBook.ThisCustomer.CustDOB.ToString();
+        txtEmail.Text = CustomerBook.ThisCustomer.CustEmail.ToString();
+        txtAddress.Text = CustomerBook.ThisCustomer.CustAddress.ToString();
+        chkHas2SV.Checked = CustomerBook.ThisCustomer.Has2SV;
     }
 
     protected void btnOk_Click(object sender, EventArgs e)
@@ -32,9 +60,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //varaible to store any error messages
         string Error = "";
         //validate the data
-        Error = AnCustomer.Valid(CustFirstName, CustLastName, CustDOB, CustEmail, CustAddress);
+        Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
         if (Error == "")
         {
+            //capture the CustomerNo
+            AnCustomer.CustomerNo = CustomerNo;
             //capture the first name
             AnCustomer.CustFirstName = CustFirstName;
             //capture the last name
@@ -45,14 +75,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.CustEmail = CustEmail;
             //capture the address
             AnCustomer.CustAddress = CustAddress;
-            
-            //store the address in the session object
-            Session["AnCustomer"] = AnCustomer;
-            //navigate to the view page
-            Response.Redirect("CustomerViewer.aspx");
+            //capture the Has2SV
+            AnCustomer.Has2SV = chkHas2SV.Checked;
+            //create a new instance of the address collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
 
-            //capture the customer no
-            //AnCustomer.CustomerNo = Convert.ToInt32(txtCustomerNo.Text);
+            //if this is a new record i.e CustomerNo = -1 then add the data
+            if (CustomerNo == -1)
+            {
+                //set the ThisCustomer proprty
+                CustomerList.ThisCustomer = AnCustomer;
+                //add the new record
+                CustomerList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                CustomerList.ThisCustomer.Find(CustomerNo);
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = AnCustomer;
+                //update the record 
+                CustomerList.Update();
+            }
+            //redirect back to the list page
+            Response.Redirect("CustomerList.aspx");
+
+            //store the customer in the session object
+            Session["AnCustomer"] = AnCustomer;
         }
         else
         {
