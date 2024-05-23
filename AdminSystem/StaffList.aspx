@@ -8,11 +8,29 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
-        <asp:Button runat="server" Text="Add" ID="buttonAdd" OnClick="buttonAdd_Click"></asp:Button>
-        <asp:Button runat="server" Text="Button"></asp:Button>
-        <asp:ListBox ID="lstStaffList" runat="server" style="z-index: 1; left: 10px; top: 34px; position: absolute; height: 378px; width: 225px"></asp:ListBox><blocked-overlay><div class="blockedOverlayWrapper" style="position: absolute; top: 0px; left: 0px; width: 827px; height: 883px; pointer-events: none;"><blocked-overlay-rect height="471" width="827" top="412" left="0"><br class="Apple-interchange-newline"><div class="blockedOverlayRect" style="position: absolute; cursor: not-allowed; background-color: rgba(0, 0, 0, 0.3); pointer-events: auto; top: 412px; left: 0px; width: 827px; height: 471px;"></div></blocked-overlay-rect><blocked-overlay-rect height="360" width="10" top="52" left="0"><div class="blockedOverlayRect" style="position: absolute; cursor: not-allowed; background-color: rgba(0, 0, 0, 0.3); pointer-events: auto; top: 52px; left: 0px; width: 10px; height: 360px;"></div></blocked-overlay-rect><blocked-overlay-rect height="360" width="592" top="52" left="235"><div class="blockedOverlayRect" style="position: absolute; cursor: not-allowed; background-color: rgba(0, 0, 0, 0.3); pointer-events: auto; top: 52px; left: 235px; width: 592px; height: 360px;"></div></blocked-overlay-rect></div></blocked-overlay><selector-parent-decorator isvisible=""><div id="elementOutline" style="position: fixed; height: 31px; width: 821px; top: 3px; left: 3px; pointer-events: none; display: grid; grid-template-columns: 5px 1fr 5px; grid-template-rows: 5px 1fr 5px;"><div id="outer-top" style="background-image: linear-gradient(to right top, black 10%, white 10%, white 40%, black 40%, black 60%, white 60%, white 90%, black 90%); background-size: 5px 5px; cursor: move; pointer-events: all; grid-area: 1 / 1 / 2 / 3; color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"></div><div id="outer-left" style="background-image: linear-gradient(to right top, black 10%, white 10%, white 40%, black 40%, black 60%, white 60%, white 90%, black 90%); background-size: 5px 5px; cursor: move; pointer-events: all; grid-area: 2 / 1 / 4 / 2; color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"></div><div id="outer-right" style="background-image: linear-gradient(to right top, black 10%, white 10%, white 40%, black 40%, black 60%, white 60%, white 90%, black 90%); background-size: 5px 5px; cursor: move; pointer-events: all; grid-area: 1 / 3 / 3 / 4; color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"></div><br class="Apple-interchange-newline">
+
+        
+        <asp:ListBox ID="lstStaffList" runat="server" style="z-index: 1; left: 89px; top: 15px; position: absolute; height: 378px; width: 192px"></asp:ListBox>
+
+        
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 412px; top: 199px; position: absolute"></asp:Label><blocked-overlay-rect height="2" width="58" top="53" left="0"><br class="Apple-interchange-newline"><div class="blockedOverlayRect" style="position: absolute; cursor: not-allowed; background-color: rgba(0, 0, 0, 0.3); pointer-events: auto; top: 0px; left: 0px; width: 58px; height: 2px;"></div></blocked-overlay-rect><blocked-overlay-rect height="2" width="73" top="53" left="679"><div class="blockedOverlayRect" style="position: absolute; cursor: not-allowed; background-color: rgba(0, 0, 0, 0.3); pointer-events: auto; top: 53px; left: 679px; width: 73px; height: 2px;"></div></blocked-overlay-rect><blocked-overlay-rect height="277" width="752" top="413" left="0">
+        <asp:Button ID="buttonAdd" runat="server"  style="z-index: 1; left: 59px; top: 424px; position: absolute; width: 44px" Text="Add" height="26px" OnClick="buttonAdd_Click" />
+        </blocked-overlay-rect><blocked-overlay-rect height="340" width="58" top="73" left="0"><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"></span><br class="Apple-interchange-newline">
+
+            <asp:Button ID="buttonEdit" runat="server" style="z-index: 1; left: 135px; top: 425px; position: absolute; width: 44px" Text="Edit" OnClick="buttonEdit_Click1" />
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <asp:Button ID="buttonDelete" runat="server" style="z-index: 1; left: 220px; top: 424px; position: absolute; width: 48px; height: 26px" Text="Delete" OnClick="buttonDelete_Click1" />
+        <asp:Label ID="Name" runat="server" style="z-index: 1; left: 74px; top: 496px; position: absolute" Text="Enter a Name "></asp:Label>
+        <p>
+            <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 197px; top: 493px; position: absolute"></asp:TextBox>
+        </p>
+        <asp:Button ID="ApplyFilter" runat="server" style="z-index: 1; left: 57px; top: 551px; position: absolute" Text="Apply Filter " OnClick="ApplyFilter_Click1" />
+        <p>
+            <asp:Button ID="ClearFilter" runat="server" style="z-index: 1; left: 247px; top: 549px; position: absolute" Text="Clear Filter" OnClick="ClearFilter_Click" />
+        </p>
         </form>
 </body>
 </html>

@@ -89,7 +89,7 @@ namespace ClassLibrary
             set { mStaffEmail = value; }
         }
 
-        public bool Find(Int32 StaffId)
+        public bool Find(int StaffId)
 
         {   // create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
@@ -106,8 +106,8 @@ namespace ClassLibrary
                 mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
                 mStaffAddress = Convert.ToString(DB.DataTable.Rows[0]["StaffAddress"]);
                 mStaffName = Convert.ToString(DB.DataTable.Rows[0]["StaffName"]);
-                mStaffPhoneNumber = Convert.ToString(DB.DataTable.Rows[0]["StaffPhoneNumber"]);
                 mStaffEmail = Convert.ToString(DB.DataTable.Rows[0]["StaffEmail"]);
+                mStaffPhoneNumber = Convert.ToString(DB.DataTable.Rows[0]["StaffPhoneNumber"]);
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]); 
 
@@ -133,12 +133,12 @@ namespace ClassLibrary
             if(staffAddress.Length == 0)
             {
                 //record the error 
-                Error = Error + " The staff address may not be blank : ";
+                Error = Error + " The staff address should not be blank : ";
             }
             //if the house no is greater than 75
             if (staffAddress.Length > 75) {
                 //record the error
-                Error = Error + "The staff address must be less than 75 characters : ";
+                Error = Error + "The staff address should be less than 75 characters : ";
             }
             try
             {
@@ -147,11 +147,11 @@ namespace ClassLibrary
                 // compare dateAdded with DateComp
                 if (DateTemp < DateComp)
                 {
-                    Error = Error + "date cannot be in past : ";
+                    Error = Error + "Date cannot be in past : ";
                 }
                 if (DateTemp > DateComp)
                 {
-                    Error = Error + "Date can't be in future : ";
+                    Error = Error + "Date cannot be in future : ";
                 }
             }
             catch
@@ -179,7 +179,7 @@ namespace ClassLibrary
             }
             if (staffEmail.Length > 30)
             {
-                Error = Error + "StaffEamil should not more than 30 characters : ";
+                Error = Error + "StaffEamil should be less than 30 characters : ";
             }
             //return any error messages
             return Error;
