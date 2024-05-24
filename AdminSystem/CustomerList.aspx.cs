@@ -59,4 +59,58 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Plese select a record from the list to edit";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //varaible to store the PK value of the recordto be edited
+        Int32 CustomerNo;
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            //get the PK value of the record to edit
+            CustomerNo = Convert.ToInt32(lstCustomerList.SelectedValue);
+            //store the data in the session object
+            Session["CustomerNo"] = CustomerNo;
+            //redirect to the edit page
+            Response.Redirect("CustomerConfirmDelete.aspx");
+        }
+        else    //if no record has been selected
+        {
+            lblError.Text = "Plese select a record from the list to edit";
+        }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        //create an instance of the Customer object
+        clsCustomerCollection AnCustomer = new clsCustomerCollection();
+        //retrieve the value of the address from the presentation layer
+        AnCustomer.ReportByAddress(txtEnterAddress.Text);
+        //set the data source to the list of customers in the collection
+        lstCustomerList.DataSource = AnCustomer.CustomerList;
+        //set the name of the PK
+        lstCustomerList.DataValueField = "CustomerNo";
+        //set the name of the field to display
+        lstCustomerList.DataTextField = "CustAddress";
+        //bind the data to the list
+        lstCustomerList.DataBind();
+        
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        //create an instance of the Customer object
+        clsCustomerCollection AnCustomer = new clsCustomerCollection();
+        //set an empty string
+        AnCustomer.ReportByAddress("");
+        //clear any exsiting filter
+        txtEnterAddress.Text = "";
+        //set the data source to the list of customers in the collection
+        lstCustomerList.DataSource = AnCustomer.CustomerList;
+        //set the name of the PK
+        lstCustomerList.DataValueField = "CustomerNo";
+        //set the name of the field to display
+        lstCustomerList.DataTextField = "CustAddress";
+        //bind the data to the list
+        lstCustomerList.DataBind();
+    }
 }

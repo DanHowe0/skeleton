@@ -28,17 +28,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
     void DisplayCustomer()
     {
         //create an instance of the address book
-        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+        clsCustomerCollection Customer = new clsCustomerCollection();
         //find the record to update
-        CustomerBook.ThisCustomer.Find(CustomerNo);
+        Customer.ThisCustomer.Find(CustomerNo);
         //display the data for the record
-        txtCustomerNo.Text = CustomerBook.ThisCustomer.CustomerNo.ToString();
-        txtFirstName.Text = CustomerBook.ThisCustomer.CustFirstName.ToString();
-        txtLastName.Text = CustomerBook.ThisCustomer.CustLastName.ToString();
-        txtDOB.Text = CustomerBook.ThisCustomer.CustDOB.ToString();
-        txtEmail.Text = CustomerBook.ThisCustomer.CustEmail.ToString();
-        txtAddress.Text = CustomerBook.ThisCustomer.CustAddress.ToString();
-        chkHas2SV.Checked = CustomerBook.ThisCustomer.Has2SV;
+        txtCustomerNo.Text = Customer.ThisCustomer.CustomerNo.ToString();
+        txtFirstName.Text = Customer.ThisCustomer.CustFirstName.ToString();
+        txtLastName.Text = Customer.ThisCustomer.CustLastName.ToString();
+        txtDOB.Text = Customer.ThisCustomer.CustDOB.ToString();
+        txtEmail.Text = Customer.ThisCustomer.CustEmail.ToString();
+        txtAddress.Text = Customer.ThisCustomer.CustAddress.ToString();
+        chkHas2SV.Checked = Customer.ThisCustomer.Has2SV;
     }
 
     protected void btnOk_Click(object sender, EventArgs e)
