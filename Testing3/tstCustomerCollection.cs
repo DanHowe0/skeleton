@@ -162,7 +162,93 @@ namespace Testing3
             //test to see if thiscustomer matches the test data
         }
 
-    }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            //create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store PK
+            Int32 PrimaryKey = 0;
+            //set its properties 
+            TestItem.Has2SV = true;
+            TestItem.CustomerNo = 2;
+            TestItem.CustFirstName = "Bill";
+            TestItem.CustLastName = "Will";
+            TestItem.CustEmail = "bill@gmail.com";
+            TestItem.CustAddress = "some address";
+            TestItem.CustDOB = DateTime.Now;
+            //set ThisCustomer to the test data
+            AllCustomer.ThisCustomer = TestItem;
+            //add new record
+            PrimaryKey = AllCustomer.Add();
+            //se PK of the test data
+            TestItem.CustomerNo = PrimaryKey;
+            //find the record
+            AllCustomer.ThisCustomer.Find(PrimaryKey);
+            //delete the record
+            AllCustomer.Delete();
+            //now find the record
+            Boolean Found = AllCustomer.ThisCustomer.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
 
+        [TestMethod]
+        public void ReportByAddressOK()
+        {
+            //create an instance of the class
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            //create an instance of the filtered data 
+            clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
+            //apply a blank string (should return all records)
+            FilteredCustomer.ReportByAddress("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomer.Count, FilteredCustomer.Count);
+        }
+
+        [TestMethod]
+        public void ReportByAddressNoneFound()
+        {
+            //create an instance of the class
+            clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
+            //apply a address that doesn't exist
+            FilteredCustomer.ReportByAddress("xxxxx, xxxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredCustomer.Count);
+        }
+
+        [TestMethod]
+        public void ReportByAddressTestDataFound()
+        {
+            //create an instance of the class
+            clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
+            //varaible to store the outcome 
+            Boolean OK = true;
+            //apply a address that doesn't exist
+            FilteredCustomer.ReportByAddress("yyyy, yyyy");
+            //check that the correct number of records are found
+            if (FilteredCustomer.Count == 2)
+            {
+                //check to see that the first record is 14
+                if (FilteredCustomer.CustomerList[0].CustomerNo != 14)
+                {
+                    OK = false;
+                }
+                //check to see that the second record is 15
+                if (FilteredCustomer.CustomerList[1].CustomerNo != 15)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
+    }
 }
 

@@ -51,24 +51,34 @@ namespace ClassLibrary
             }
         }
 
+        //construct for the class
         public clsCustomerCollection()
         {
-            //variable for the index 
-            Int32 Index = 0;
-            //varibale to store the record count
-            Int32 RecordCount = 0;
             //object for the data connect
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblCustomer_SelectAll");
-            //get record count
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        public void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //varaible for the index 
+            Int32 Index = 0;
+            //vartaible to store the record count 
+            Int32 RecordCount;
+            //get the count of records 
             RecordCount = DB.Count;
-            //while records to process
+            //clear the array list 
+            mCustomerList = new List<clsCustomer>();
+            //while there are records to  process
             while (Index < RecordCount)
             {
-                //create a blank customer
+                //create blank customer object 
                 clsCustomer AnCustomer = new clsCustomer();
-                //read in the fields for the current records
+                //read in the fields from the current record
                 AnCustomer.CustomerNo = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerNo"]);
                 AnCustomer.Has2SV = Convert.ToBoolean(DB.DataTable.Rows[Index]["Has2SV"]);
                 AnCustomer.CustFirstName = Convert.ToString(DB.DataTable.Rows[Index]["CustFirstName"]);
@@ -76,11 +86,13 @@ namespace ClassLibrary
                 AnCustomer.CustEmail = Convert.ToString(DB.DataTable.Rows[Index]["CustEmail"]);
                 AnCustomer.CustAddress = Convert.ToString(DB.DataTable.Rows[Index]["CustAddress"]);
                 AnCustomer.CustDOB = Convert.ToDateTime(DB.DataTable.Rows[Index]["CustDOB"]);
-                //add the record to the privae data member
+                //add the record to the private data memeber 
                 mCustomerList.Add(AnCustomer);
                 //point at the next record
                 Index++;
             }
+
+
         }
 
         public int Add()
@@ -116,6 +128,30 @@ namespace ClassLibrary
 
             //execute the query returning the PK key value
              DB.Execute("sproc_tblCustomer_Update");
+        }
+
+        public void Delete()
+        {
+            //delete the record pointed to by thisCustomer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the sored procedure
+            DB.AddParameter("@CustomerNo", mThisCustomer.CustomerNo);
+            //execute the procedure
+            DB.Execute("sproc_tblCustomer_Delete");
+        }
+
+        public void ReportByAddress(string CustAddress)
+        {
+            //filters the records based on a address
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the address parameter to the database
+            DB.AddParameter("@CustAddress", CustAddress);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_FilterByAddress");
+            //pouplate the array list with the data table
+            PopulateArray(DB);
         }
     }
 }
