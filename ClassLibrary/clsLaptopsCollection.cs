@@ -5,7 +5,9 @@ namespace ClassLibrary
 {
     public class clsLaptopsCollection
     {
+        //private data members
         List<clsLaptops> mLaptopsList = new List<clsLaptops>();
+        clsLaptops mThisLaptop = new clsLaptops();
 
         public List<clsLaptops> LaptopsList 
         {
@@ -32,7 +34,19 @@ namespace ClassLibrary
                 //i was told to not worry about this -\_o_/-
             }
         }
-        public clsLaptops ThisLaptop { get; set; }
+        public clsLaptops ThisLaptop 
+        {
+            get 
+            {
+                //return the private data
+                return mThisLaptop;
+            }
+            set 
+            {
+                //set the private data
+                mThisLaptop = value;
+            }
+        }
 
         public clsLaptopsCollection() 
         { 
@@ -64,6 +78,40 @@ namespace ClassLibrary
                 //point at the next record
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            //adds a record to the database based on the values of mThisAddress
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@LaptopModel", mThisLaptop.LaptopModel);
+            DB.AddParameter("@LaptopManufacturer", mThisLaptop.LaptopManufacturer);
+            DB.AddParameter("@LaptopQuantity", mThisLaptop.LaptopQuantity);
+            DB.AddParameter("@LaptopPrice", mThisLaptop.LaptopPrice);
+            DB.AddParameter("@LaptopReorder", mThisLaptop.LaptopReorder);
+            DB.AddParameter("@LaptopReorderDate", mThisLaptop.LaptopReorderDate);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblLaptops_Insert");
+        }
+
+        public void Update()
+        {
+            //update an existing record based on values of thisAddress
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the new sproc
+            DB.AddParameter("@LaptopId", mThisLaptop.LaptopID);
+            DB.AddParameter("@LaptopModel", mThisLaptop.LaptopModel);
+            DB.AddParameter("@LaptopManufacturer", mThisLaptop.LaptopManufacturer);
+            DB.AddParameter("@LaptopQuantity", mThisLaptop.LaptopQuantity);
+            DB.AddParameter("@LaptopPrice", mThisLaptop.LaptopPrice);
+            DB.AddParameter("@LaptopReorder", mThisLaptop.LaptopReorder);
+            DB.AddParameter("@LaptopReorderDate", mThisLaptop.LaptopReorderDate);
+            //execute the sproc
+            DB.Execute("sproc_tblLaptops_Update");
         }
     }
 }

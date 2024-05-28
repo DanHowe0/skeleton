@@ -778,7 +778,7 @@ namespace Testing1
             //string variable to store any error messages
             String Error = "";
             //create a variable to store the test data
-            String laptopQuantity = "50";
+            String laptopQuantity = "500";
             //Invoke the method
             Error = aLaptop.Valid(laptopModel, laptopManufacturer, laptopQuantity, laptopPrice, laptopReorderDate);
             //test to seee tha the result is correct
@@ -792,7 +792,7 @@ namespace Testing1
             //string variable to store any error messages
             String Error = "";
             //create a variable to store the test data
-            String laptopQuantity = "99";
+            String laptopQuantity = "999";
             //Invoke the method
             Error = aLaptop.Valid(laptopModel, laptopManufacturer, laptopQuantity, laptopPrice, laptopReorderDate);
             //test to seee tha the result is correct
@@ -806,7 +806,7 @@ namespace Testing1
             //string variable to store any error messages
             String Error = "";
             //create a variable to store the test data
-            String laptopQuantity = "100";
+            String laptopQuantity = "1000";
             //Invoke the method
             Error = aLaptop.Valid(laptopModel, laptopManufacturer, laptopQuantity, laptopPrice, laptopReorderDate);
             //test to seee tha the result is correct
@@ -820,7 +820,7 @@ namespace Testing1
             //string variable to store any error messages
             String Error = "";
             //create a variable to store the test data
-            String laptopQuantity = "101";
+            String laptopQuantity = "1001";
             //Invoke the method
             Error = aLaptop.Valid(laptopModel, laptopManufacturer, laptopQuantity, laptopPrice, laptopReorderDate);
             //test to seee tha the result is correct

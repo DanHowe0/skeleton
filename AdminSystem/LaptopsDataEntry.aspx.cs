@@ -8,9 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 LaptopId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the Laptop to be processed
+        LaptopId = Convert.ToInt32(Session["LaptopId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (LaptopId != -1)
+            {
+                //display the current data for the record
+                DisplayLaptop();
+            }
+        }
+    }
 
+    void DisplayLaptop()
+    {
+        //create an instance of the address book
+        clsLaptopsCollection Laptops = new clsLaptopsCollection();
+        //find the record to update
+        Laptops.ThisLaptop.Find(LaptopId);
+        //display the data for the record
+        txtLaptopID.Text = Laptops.ThisLaptop.LaptopID.ToString();
+        txtLaptopModel.Text = Laptops.ThisLaptop.LaptopModel.ToString();
+        txtLaptopManufacturer.Text = Laptops.ThisLaptop.LaptopManufacturer.ToString();
+        txtLaptopQuantity.Text = Laptops.ThisLaptop.LaptopQuantity.ToString();
+        txtLaptopPrice.Text = Laptops.ThisLaptop.LaptopPrice.ToString();
+        chkLaptopReorder.Checked = Laptops.ThisLaptop.LaptopReorder;
+        txtLaptopReorderDate.Text = Laptops.ThisLaptop.LaptopReorderDate.ToString();
     }
 
     protected void btnOk_Click(object sender, EventArgs e)
@@ -35,6 +63,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = newLaptop.Valid(LaptopModel, LaptopManufacturer, LaptopQuantity, LaptopPrice, LaptopReorderDate);
         if (Error == "")
         {
+            //capture the address id
+            newLaptop.LaptopID = LaptopId;
             //capture the model value
             newLaptop.LaptopModel = txtLaptopModel.Text;
             //capture the manufacturer value
@@ -42,17 +72,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture the quantity value
             newLaptop.LaptopQuantity = Convert.ToInt32(txtLaptopQuantity.Text);
             //capture the price value
-            newLaptop.LaptopPrice = Convert.ToInt32(txtLaptopPrice.Text);
+            newLaptop.LaptopPrice = Convert.ToDouble(txtLaptopPrice.Text);
             //capture the reorder value
-            newLaptop.LaptopReorder = Convert.ToBoolean(chkLaptopReorder.Text);
+            Console.WriteLine(chkLaptopReorder.Text);
+            newLaptop.LaptopReorder = chkLaptopReorder.Checked;
             //capture the reorder date value
             newLaptop.LaptopReorderDate = Convert.ToDateTime(txtLaptopReorderDate.Text);
-            // add the data to a session for later
-            Session["aLaptop"] = newLaptop;
+            //create a new instance od the address collection
+            clsLaptopsCollection LaptopsList = new clsLaptopsCollection();
 
-            //redirect to the viewer page
-            Response.Redirect("LaptopsViewer.aspx");
-        } else
+            //if this is a new record then add the data
+            if (LaptopId == -1)
+            {
+                //set the ThisAddress property
+                LaptopsList.ThisLaptop = newLaptop;
+                //add the new record
+                LaptopsList.Add();
+            } 
+            //else it must be an update
+            else 
+            {
+                //find the record to update
+                LaptopsList.ThisLaptop.Find(LaptopId);
+                //set the ThisAddress property
+                LaptopsList.ThisLaptop = newLaptop;
+                //update the record
+                LaptopsList.Update();
+            }
+
+            //redirect to the list page
+            Response.Redirect("LaptopsList.aspx");
+        } 
+        else 
         {
             //display the error message
             lblError.Text = Error;

@@ -155,10 +155,10 @@ namespace ClassLibrary
             {
                 //copy the laptopQuantity to QuantityTemp
                 int QuantityTemp = Convert.ToInt32(laptopQuantity);
-                if (100 < QuantityTemp)
+                if (1000 < QuantityTemp)
                 {
                     //record the error
-                    Error += "The quantity must be lower than or equal to 100 : ";
+                    Error += "The quantity must be lower than or equal to 1000 : ";
                 }
                 if (0 > QuantityTemp)
                 {
