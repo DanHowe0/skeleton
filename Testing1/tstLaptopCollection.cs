@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 
 namespace Testing1
 {
@@ -151,6 +152,86 @@ namespace Testing1
             AllLaptops.ThisLaptop.Find(PrimaryKey);
             //test to see if ThisAddress matches the rest data
             Assert.AreEqual(AllLaptops.ThisLaptop, TestItem);
+        }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsLaptopsCollection AllLaptops = new clsLaptopsCollection();
+            //create the item of test data
+            clsLaptops TestItem = new clsLaptops();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.LaptopID = PrimaryKey;
+            TestItem.LaptopModel = "Test Delete";
+            TestItem.LaptopManufacturer = "Test Delete";
+            TestItem.LaptopQuantity = 222;
+            TestItem.LaptopPrice = 12.31;
+            TestItem.LaptopReorder = true;
+            TestItem.LaptopReorderDate = DateTime.Now.AddMonths(5);
+            //set ThisAddress to the test data
+            AllLaptops.ThisLaptop = TestItem;
+            //add the record
+            PrimaryKey = AllLaptops.Add();
+            //set the primary key of the test data
+            TestItem.LaptopID = PrimaryKey;
+            //find the record
+            AllLaptops.ThisLaptop.Find(PrimaryKey);
+            //delete the record
+            AllLaptops.Delete();
+            //now find the record
+            Boolean Found = AllLaptops.ThisLaptop.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void ReportByManufacturerMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsLaptopsCollection AllLaptops = new clsLaptopsCollection();
+            //create an instance of the filtered data
+            clsLaptopsCollection FilteredLaptops = new clsLaptopsCollection();
+            //apply a blank string (should return all records);
+            FilteredLaptops.ReportByManufacturer("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllLaptops.Count, FilteredLaptops.Count);
+        }
+        [TestMethod]
+        public void ReportByManufacturerNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsLaptopsCollection FilteredLaptops = new clsLaptopsCollection();
+            //apply a manufacturer that doesnt exist
+            FilteredLaptops.ReportByManufacturer("xxxxxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredLaptops.Count);
+        }
+        [TestMethod]
+        public void ReportByManufacturerTestDataFound() 
+        {
+            //create an instance of the filtered data
+            clsLaptopsCollection FilteredLaptops = new clsLaptopsCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply the test manufacturer
+            FilteredLaptops.ReportByManufacturer("Test");
+            //check that the correct number of records are found
+            if (FilteredLaptops.Count == 2)
+            {
+                //check if the first record is 1
+                if (FilteredLaptops.LaptopsList[0].LaptopID != 1)
+                {
+                    OK = false;
+                }
+                //check if the first record is 2
+                if (FilteredLaptops.LaptopsList[1].LaptopID != 2)
+                {
+                    OK = false;
+                }
+            } else { OK = false; }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
         }
     }
 }

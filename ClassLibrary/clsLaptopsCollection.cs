@@ -48,36 +48,15 @@ namespace ClassLibrary
             }
         }
 
+        //constructor for the class
         public clsLaptopsCollection() 
         { 
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store the record count
-            Int32 RecordCount = 0;
             //object for the data connect
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblLaptops_SelectAll");
-            //get the count of records
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                //create a blank address
-                clsLaptops aLaptop = new clsLaptops();
-                //read in the fields
-                aLaptop.LaptopID = Convert.ToInt32(DB.DataTable.Rows[Index]["LaptopID"]);
-                aLaptop.LaptopModel = Convert.ToString(DB.DataTable.Rows[Index]["LaptopModel"]);
-                aLaptop.LaptopManufacturer = Convert.ToString(DB.DataTable.Rows[Index]["LaptopManufacturer"]);
-                aLaptop.LaptopQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["LaptopQuantity"]);
-                aLaptop.LaptopPrice = Convert.ToDouble(DB.DataTable.Rows[Index]["LaptopPrice"]);
-                aLaptop.LaptopReorder = Convert.ToBoolean(DB.DataTable.Rows[Index]["LaptopReorder"]);
-                aLaptop.LaptopReorderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["LaptopReorderDate"]);
-                //add the record to the private data member
-                mLaptopsList.Add(aLaptop);
-                //point at the next record
-                Index++;
-            }
+            //populate the array
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -112,6 +91,61 @@ namespace ClassLibrary
             DB.AddParameter("@LaptopReorderDate", mThisLaptop.LaptopReorderDate);
             //execute the sproc
             DB.Execute("sproc_tblLaptops_Update");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by ThisLaptop
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@LaptopId", mThisLaptop.LaptopID);
+            //execute the sproc
+            DB.Execute("sproc_tblLaptops_Delete");
+        }
+
+        public void ReportByManufacturer(string LaptopManufacturer)
+        {
+            //filters the records based on a full or partial manufacturer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the manufacturer paramater to the sproc
+            DB.AddParameter("@LaptopManufacturer", LaptopManufacturer);
+            //execute the sproc
+            DB.Execute("sproc_tblLaptops_FilterByManufacturer");
+            //populate the array
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array based on the data in the table DB
+            //var for index
+            Int32 Index = 0;
+            //variable for the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mLaptopsList = new List<clsLaptops>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank address
+                clsLaptops aLaptop = new clsLaptops();
+                //read in the fields
+                aLaptop.LaptopID = Convert.ToInt32(DB.DataTable.Rows[Index]["LaptopID"]);
+                aLaptop.LaptopModel = Convert.ToString(DB.DataTable.Rows[Index]["LaptopModel"]);
+                aLaptop.LaptopManufacturer = Convert.ToString(DB.DataTable.Rows[Index]["LaptopManufacturer"]);
+                aLaptop.LaptopQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["LaptopQuantity"]);
+                aLaptop.LaptopPrice = Convert.ToDouble(DB.DataTable.Rows[Index]["LaptopPrice"]);
+                aLaptop.LaptopReorder = Convert.ToBoolean(DB.DataTable.Rows[Index]["LaptopReorder"]);
+                aLaptop.LaptopReorderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["LaptopReorderDate"]);
+                //add the record to the private data member
+                mLaptopsList.Add(aLaptop);
+                //point at the next record
+                Index++;
+            }
         }
     }
 }
