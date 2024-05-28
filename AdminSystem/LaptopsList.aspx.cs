@@ -27,7 +27,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key
         lstLaptopsList.DataValueField = "LaptopID";
         //set the data to display
-        lstLaptopsList.DataTextField = "LaptopManufacturer";
+        lstLaptopsList.DataTextField = "LaptopModel";
         //bind the data to the list
         lstLaptopsList.DataBind();
     }
@@ -57,5 +57,60 @@ public partial class _1_List : System.Web.UI.Page
         {
             lblError.Text = "Please select a record from the list to edit";
         }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be deleted
+        Int32 LaptopID;
+        //if a record has been selected from the list
+        if (lstLaptopsList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to delete
+            LaptopID = Convert.ToInt32(lstLaptopsList.SelectedValue);
+            //store the data in the session object
+            Session["LaptopId"] = LaptopID;
+            //redirect to the delete page
+            Response.Redirect("LaptopsConfirmDelete.aspx");
+        }
+        else // if no record is selected
+        {
+            //display error message
+            lblError.Text = "Please select a record from the list to delete";
+        }
+    }
+
+    protected void btnFilterApply_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address object
+        clsLaptopsCollection FilteredLaptops = new clsLaptopsCollection();
+        //retrieve the value of the manufacturer from the pres layer
+        FilteredLaptops.ReportByManufacturer(txtFilter.Text);
+        //set the data source to the list of addresses in the collection
+        lstLaptopsList.DataSource = FilteredLaptops.LaptopsList;
+        //set the name of the primary key
+        lstLaptopsList.DataValueField = "LaptopId";
+        //set the name of the field to display
+        lstLaptopsList.DataTextField = "LaptopModel";
+        //bind the data to the list
+        lstLaptopsList.DataBind();
+    }
+
+    protected void btnFilterRemove_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address object
+        clsLaptopsCollection FilteredLaptops = new clsLaptopsCollection();
+        //retrieve the value of the manufacturer from the pres layer
+        FilteredLaptops.ReportByManufacturer("");
+        //clear the filter from the interface
+        txtFilter.Text = "";
+        //set the data source to the list of addresses in the collection
+        lstLaptopsList.DataSource = FilteredLaptops.LaptopsList;
+        //set the name of the primary key
+        lstLaptopsList.DataValueField = "LaptopId";
+        //set the name of the field to display
+        lstLaptopsList.DataTextField = "LaptopModel";
+        //bind the data to the list
+        lstLaptopsList.DataBind();
     }
 }
