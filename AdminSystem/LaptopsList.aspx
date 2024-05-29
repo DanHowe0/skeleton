@@ -23,7 +23,7 @@
             <asp:Button ID="btnFilterRemove" runat="server" style="margin-left: 40px" Width="150px" Text="Clear Filter" OnClick="btnFilterRemove_Click" />
         </p>
         <p>
-            <asp:Label ID="lblError" runat="server" style="margin-left: 30px"></asp:Label>
+            <asp:Label ID="lblError" runat="server" style="margin-left: 30px" ForeColor="#FF3300"></asp:Label>
         </p>
     </form>
 </body>

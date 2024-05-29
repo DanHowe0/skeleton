@@ -45,6 +45,7 @@
     <Compile Include="clsCustomerCollection.cs" />
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsLaptopsCollection.cs" />
+    <Compile Include="clsLaptopsUser.cs" />
     <Compile Include="clsStaff.cs" />
     <Compile Include="clsLaptops.cs" />
     <Compile Include="clsStaffCollection.cs" />

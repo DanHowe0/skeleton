@@ -50,7 +50,7 @@
         <asp:TextBox ID="txtLaptopReorderDate" runat="server" Width="191px"></asp:TextBox>
         </p>
         <p class="auto-style2">
-        <asp:Label ID="lblError" runat="server" style="text-align: center"></asp:Label>
+        <asp:Label ID="lblError" runat="server" style="text-align: center" ForeColor="#FF3300"></asp:Label>
         </p>
         <p class="auto-style2">
             <asp:Button ID="btnOk" runat="server" style="margin-left: 30px" Text="OK" Width="100px" OnClick="btnOk_Click" />

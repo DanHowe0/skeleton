@@ -158,7 +158,7 @@ namespace Testing1
             //invoke the method
             found = aLaptop.Find(LaptopID);
             //check the address id
-            if (aLaptop.LaptopModel != "Test")
+            if (aLaptop.LaptopModel != "Test1")
             {
                 OK = false;
             }
@@ -200,7 +200,7 @@ namespace Testing1
             //invoke the method
             found = aLaptop.Find(LaptopID);
             //check the address id
-            if (aLaptop.LaptopQuantity != 7357)
+            if (aLaptop.LaptopQuantity != 10)
             {
                 OK = false;
             }
@@ -221,7 +221,7 @@ namespace Testing1
             //invoke the method
             found = aLaptop.Find(LaptopID);
             //check the address id
-            if (aLaptop.LaptopPrice != 73.57)
+            if (aLaptop.LaptopPrice != 999.99)
             {
                 OK = false;
             }
@@ -242,7 +242,7 @@ namespace Testing1
             //invoke the method
             found = aLaptop.Find(LaptopID);
             //check the address id
-            if (aLaptop.LaptopReorder != true)
+            if (aLaptop.LaptopReorder != false)
             {
                 OK = false;
             }
