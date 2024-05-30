@@ -18,7 +18,7 @@ namespace Testing1
             Assert.IsNotNull(AllLaptops);
         }
         [TestMethod]
-        public void AddressListOK()
+        public void LaptopsListOK()
         {
             //create an instance of the class we want to create
             clsLaptopsCollection AllLaptops = new clsLaptopsCollection();
@@ -42,7 +42,7 @@ namespace Testing1
             Assert.AreEqual(AllLaptops.LaptopsList, TestList);
         }
         [TestMethod]
-        public void ThisAddressPropertyOK()
+        public void ThisLaptopPropertyOK()
         {
             //create an instance of the class we want to create
             clsLaptopsCollection AllLaptops = new clsLaptopsCollection();
@@ -96,8 +96,8 @@ namespace Testing1
             Int32 PrimaryKey = 0;
             //set the properties
             TestItem.LaptopID = 1;
-            TestItem.LaptopModel = "Test";
-            TestItem.LaptopManufacturer = "Test";
+            TestItem.LaptopModel = "Tst Add";
+            TestItem.LaptopManufacturer = "Tst Add";
             TestItem.LaptopQuantity = 7357;
             TestItem.LaptopPrice = 73.57;
             TestItem.LaptopReorder = true;
@@ -124,8 +124,8 @@ namespace Testing1
             Int32 PrimaryKey = 0;
             //set its proprties
             TestItem.LaptopID = 1;
-            TestItem.LaptopModel = "Test";
-            TestItem.LaptopManufacturer = "Test";
+            TestItem.LaptopModel = "Tst update";
+            TestItem.LaptopManufacturer = "Tst update";
             TestItem.LaptopQuantity = 7357;
             TestItem.LaptopPrice = 73.57;
             TestItem.LaptopReorder = true;
@@ -138,8 +138,8 @@ namespace Testing1
             TestItem.LaptopID = PrimaryKey;
             //modify the test record
             TestItem.LaptopID = PrimaryKey;
-            TestItem.LaptopModel = "Test 2";
-            TestItem.LaptopManufacturer = "Test 2";
+            TestItem.LaptopModel = "Tst update clear";
+            TestItem.LaptopManufacturer = "Tst update clear";
             TestItem.LaptopQuantity = 111;
             TestItem.LaptopPrice = 12.31;
             TestItem.LaptopReorder = true;
@@ -164,8 +164,8 @@ namespace Testing1
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.LaptopID = PrimaryKey;
-            TestItem.LaptopModel = "Test Delete";
-            TestItem.LaptopManufacturer = "Test Delete";
+            TestItem.LaptopModel = "Tst Delete";
+            TestItem.LaptopManufacturer = "Tst Delete";
             TestItem.LaptopQuantity = 222;
             TestItem.LaptopPrice = 12.31;
             TestItem.LaptopReorder = true;
