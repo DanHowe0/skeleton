@@ -138,4 +138,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkHas2SV.Checked = AnCustomer.Has2SV;
         }
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect back to main page 
+        Response.Redirect("CustomerList.aspx");
+    }
 }

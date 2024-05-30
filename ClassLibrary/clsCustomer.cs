@@ -233,7 +233,7 @@ namespace ClassLibrary
                     Error = Error + "The birth date cannot be in the future : ";
                 }
                 //checks to see if the DOB is too far in the past (200 years) 
-                if (DateTemp < DateComp.AddYears(-200))
+                if (DateComp < DateComp.AddYears(-200))
                 {
                     Error = Error + "The DOB can not be that far in the past : ";
                 }
