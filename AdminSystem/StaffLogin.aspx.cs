@@ -22,6 +22,7 @@ public partial class StaffLogin : System.Web.UI.Page
         UserName = Convert.ToString (txtUserName.Text);
         Password = Convert.ToString (txtPassword.Text);
         Found = AnUser.FindUser(UserName, Password);
+        Session["AnUser"] = AnUser;
         if(txtUserName.Text == "")
         {
             lblError.Text = "Enter a Username";
@@ -42,5 +43,10 @@ public partial class StaffLogin : System.Web.UI.Page
 
         }
 
+    }
+
+    protected void ButtonCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

@@ -112,4 +112,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         chkActive.Checked= staff.ThisStaff.Active;
     }
 
+
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
