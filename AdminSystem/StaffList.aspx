@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
 
         
-        <asp:ListBox ID="lstStaffList" runat="server" style="z-index: 1; left: 89px; top: 15px; position: absolute; height: 378px; width: 192px"></asp:ListBox>
+        <asp:ListBox ID="lstStaffList" runat="server" style="z-index: 1; left: 66px; top: 62px; position: absolute; height: 333px; width: 192px"></asp:ListBox>
 
         
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 412px; top: 199px; position: absolute"></asp:Label><blocked-overlay-rect height="2" width="58" top="53" left="0"><br class="Apple-interchange-newline"><div class="blockedOverlayRect" style="position: absolute; cursor: not-allowed; background-color: rgba(0, 0, 0, 0.3); pointer-events: auto; top: 0px; left: 0px; width: 58px; height: 2px;"></div></blocked-overlay-rect><blocked-overlay-rect height="2" width="73" top="53" left="679"><div class="blockedOverlayRect" style="position: absolute; cursor: not-allowed; background-color: rgba(0, 0, 0, 0.3); pointer-events: auto; top: 53px; left: 679px; width: 73px; height: 2px;"></div></blocked-overlay-rect><blocked-overlay-rect height="277" width="752" top="413" left="0">
@@ -31,6 +31,7 @@
         <p>
             <asp:Button ID="ClearFilter" runat="server" style="z-index: 1; left: 247px; top: 549px; position: absolute" Text="Clear Filter" OnClick="ClearFilter_Click" />
         </p>
+        <asp:Button ID="btnReturnTomainMenu" runat="server" OnClick="btnReturnTomainMenu_Click" style="z-index: 1; left: 434px; top: 547px; position: absolute" Text="ReturnToMainMenu" />
         </form>
 </body>
 </html>

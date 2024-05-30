@@ -27,7 +27,7 @@
             <asp:Button ID="buttonLogIn" runat="server" height="26px" OnClick="buttonLogIn_Click" style="z-index: 1; left: 332px; top: 318px; position: absolute" Text="LogIn" width="60px" />
         </p>
         <p>
-            <asp:Button ID="ButtonCancel" runat="server" style="left: 451px; top: 317px; position: absolute; bottom: 322px" Text="Cancel" />
+            <asp:Button ID="ButtonCancel" runat="server" style="left: 475px; top: 322px; position: absolute; bottom: 328px" Text="Cancel" height="26px" OnClick="ButtonCancel_Click" width="60px" />
         </p>
         <p>
             <asp:Label ID="lblError" runat="server" ForeColor="#FF3300" style="z-index: 1; left: 385px; top: 387px; position: absolute"></asp:Label>
