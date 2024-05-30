@@ -109,7 +109,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the PK
         lstCustomerList.DataValueField = "CustomerNo";
         //set the name of the field to display
-        lstCustomerList.DataTextField = "CustAddress";
+        lstCustomerList.DataTextField = "CustFirstName";
         //bind the data to the list
         lstCustomerList.DataBind();
     }

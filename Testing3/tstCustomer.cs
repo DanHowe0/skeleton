@@ -784,7 +784,7 @@ namespace Testing3
             //invoke the method
             Error = AnCustomer.Valid(CustFirstName, CustLastName, CustEmail, CustAddress, CustDOB);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
