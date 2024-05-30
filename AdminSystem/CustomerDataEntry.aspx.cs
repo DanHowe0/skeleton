@@ -141,7 +141,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        //redirect back to main page 
+        //redirect back to list
         Response.Redirect("CustomerList.aspx");
+    }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        //redirect back to main main 
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
