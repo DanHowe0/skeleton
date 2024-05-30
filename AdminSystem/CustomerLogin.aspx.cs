@@ -51,4 +51,10 @@ public partial class CustomerLogin : System.Web.UI.Page
             lblError.Text = "Login details are incorrrect. Please try again ";
         }
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }

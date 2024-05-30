@@ -15,6 +15,9 @@ public partial class _1_List : System.Web.UI.Page
         {
             //update the list box
             DisplayLaptops();
+            //set the user
+            clsLaptopsUser User = (clsLaptopsUser)Session["User"];
+            lblUser.Text = "Logged in as: " + User.UserName;
         }
     }
 
@@ -112,5 +115,13 @@ public partial class _1_List : System.Web.UI.Page
         lstLaptopsList.DataTextField = "LaptopModel";
         //bind the data to the list
         lstLaptopsList.DataBind();
+    }
+
+    protected void btnMenu_Click(object sender, EventArgs e)
+    {
+        //reset the logged in user
+        Session["User"] = new clsLaptopsUser();
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

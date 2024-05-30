@@ -23,6 +23,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 DisplayLaptop();
             }
         }
+
+        //set the user
+        clsLaptopsUser User = (clsLaptopsUser)Session["User"];
+        lblUser.Text = "Logged in as: " + User.UserName;
     }
 
     void DisplayLaptop()
@@ -134,5 +138,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtLaptopReorderDate.Text = aLaptop.LaptopReorderDate.ToString();
 
         }
+    }
+
+    protected void btnMenu_Click(object sender, EventArgs e)
+    {
+        //reset the logged in user
+        Session["User"] = new clsLaptopsUser();
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("LaptopsList.aspx");
     }
 }

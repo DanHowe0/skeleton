@@ -8,6 +8,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <p>
+            <asp:Label ID="lblUser" runat="server" style="margin-left: 30px"></asp:Label>
+        </p>
         <div>
             <asp:ListBox ID="lstLaptopsList" runat="server" Height="426px" Width="458px"></asp:ListBox>
         </div>
@@ -24,6 +27,9 @@
         </p>
         <p>
             <asp:Label ID="lblError" runat="server" style="margin-left: 30px" ForeColor="#FF3300"></asp:Label>
+        </p>
+        <p>
+            <asp:Button ID="btnMenu" runat="server" style="margin-left: 40px" Text="Return To Main Menu" Width="350px" OnClick="btnMenu_Click"/>
         </p>
     </form>
 </body>
