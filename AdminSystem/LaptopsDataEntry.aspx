@@ -17,8 +17,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
+        <p class="auto-style1">
+            <asp:Label ID="lblUser" runat="server" style="margin-left: 30px"></asp:Label>
+        </p>
         <p class="auto-style1">
         <asp:Label ID="lblLaptopID" runat="server" Text="Laptop ID" width="130px"></asp:Label>
         <asp:TextBox ID="txtLaptopID" runat="server" Width="183px"></asp:TextBox>
@@ -54,7 +55,10 @@
         </p>
         <p class="auto-style2">
             <asp:Button ID="btnOk" runat="server" style="margin-left: 30px" Text="OK" Width="100px" OnClick="btnOk_Click" />
-            <asp:Button ID="btnCancel" runat="server" style="margin-left: 30px" Text="Cancel" Width="100px" />
+            <asp:Button ID="btnCancel" runat="server" style="margin-left: 30px" Text="Cancel" Width="100px" OnClick="btnCancel_Click" />
+        </p>
+        <p class="auto-style1">
+            <asp:Button ID="btnMenu" runat="server" style="margin-left: 40px" Text="Return To Main Menu" Width="350px" OnClick="btnMenu_Click" />
         </p>
     </form>
 </body>

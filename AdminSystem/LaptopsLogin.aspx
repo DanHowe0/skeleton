@@ -23,10 +23,13 @@
         </p>
         <p>
             <asp:Button ID="btnLogin" runat="server" style="margin-left: 89px" Text="Login" Width="70px" OnClick="btnLogin_Click" />
-            <asp:Button ID="btnCancel" runat="server" style="margin-left: 40px" Text="Cancel" Width="70px" />
+            <asp:Button ID="btnCancel" runat="server" style="margin-left: 40px" Text="Cancel" Width="70px" OnClick="btnCancel_Click" />
         </p>
         <p>
             <asp:Label ID="lblError" runat="server" style="margin-left: 50px" ForeColor="#FF3300"></asp:Label>
+        </p>
+        <p>
+            <asp:Button ID="btnMenu" runat="server" style="margin-left: 40px" Text="Return To Main Menu" Width="350px" />
         </p>
     </form>
 </body>

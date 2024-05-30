@@ -42,11 +42,19 @@ public partial class LaptopsLogin : System.Web.UI.Page
         //if found
         else if (Found && AnUser.Department == "Laptops")
         {
+            //add username to the session
+            Session["User"] = AnUser;
             //redirect to the list page
             Response.Redirect("LaptopsList.aspx");
         } else if (!Found) {
             //record the error
             lblError.Text = "Login Details incorrect. Try again ;) ";
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect back to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
