@@ -29,7 +29,7 @@
             <asp:Label ID="lblError" runat="server" style="margin-left: 50px" ForeColor="#FF3300"></asp:Label>
         </p>
         <p>
-            <asp:Button ID="btnMenu" runat="server" style="margin-left: 40px" Text="Return To Main Menu" Width="350px" />
+            <asp:Button ID="btnMenu" runat="server" style="margin-left: 40px" Text="Return To Main Menu" Width="350px" OnClick="btnMenu_Click"/>
         </p>
     </form>
 </body>
