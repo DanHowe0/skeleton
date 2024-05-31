@@ -57,4 +57,12 @@ public partial class LaptopsLogin : System.Web.UI.Page
         //redirect back to the main menu
         Response.Redirect("TeamMainMenu.aspx");
     }
+
+    protected void btnMenu_Click(object sender, EventArgs e)
+    {
+        //reset the logged in user
+        Session["User"] = new clsLaptopsUser();
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
