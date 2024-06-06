@@ -139,12 +139,12 @@ namespace ClassLibrary
                 if (DateTemp < DateComp.AddDays(30))
                 {
                     //record the error
-                    Error += "The date must be 30 days or more away : ";
+                    Error += "The date must be more than 30 days from today : ";
                 }
                 if (DateTemp > DateComp.AddYears(1))
                 {
                     //record the error
-                    Error += "The date must be less than one year away : ";
+                    Error += "The date must be less than one year away from today: ";
                 }
             } catch {
                 //record the error
@@ -179,12 +179,12 @@ namespace ClassLibrary
                 if (1000000.00 < PriceTemp)
                 {
                     //record the error
-                    Error += "The quantity must be lower than or equal to 1,000,000 : ";
+                    Error += "The price must be lower than or equal to 1,000,000.00 : ";
                 }
                 if (0.00 > PriceTemp)
                 {
                     //record the error
-                    Error += "The quantity must be higher than or equal to 0 : ";
+                    Error += "The price must be higher than or equal to 0.00 : ";
                 }
             } catch
             {
