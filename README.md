@@ -24,3 +24,4 @@ Technologies used in the project:
 *   Html
 *   C#
 *   ASP.NET
+*   SQL
